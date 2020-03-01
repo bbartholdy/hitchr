@@ -1,2 +1,2 @@
 # hitchr
-Sample generator based on hitchhiker's guide to the galaxy
+Random sample generator inspired by Douglas Adams' The Hitchhiker's Guide to the Galaxy
