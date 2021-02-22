@@ -1,5 +1,5 @@
 Package: hitchr
-Title: A random sample generator based on A Hitchhiker's Guide to the Galaxy
+Title: A random sample generator based on The Hitchhiker's Guide to the Galaxy
 Version: 0.0.0.9000
 Authors@R: 
     person(given = "Bjørn Peare",
@@ -7,7 +7,7 @@ Authors@R:
            role = c("aut", "cre"),
            email = "bpbartholdy@gmail.com",
            comment = c(ORCID = "0000-0003-3985-1016"))
-Description: Generates random samples containing races described in A 
+Description: Generates random samples containing races described in The 
   Hitchhiker's Guide to the Galaxy.
 License: MIT + file LICENSE
 Encoding: UTF-8
