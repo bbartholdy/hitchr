@@ -115,13 +115,11 @@ humans <- function(n, stats = stats_index(), ...){
   return(human_sample)
 }
 
-#' Function to create a random sample of vogons
+#' Function to create a random sample of Vogons
 #'
 #' @inheritParams humans
 #' @export
-vogons <- function(n,
-                   stats = stats_index(),
-                   ...){
+vogons <- function(n, stats = stats_index(), ...){
   vogon_cov <- matrix(nrow = 2, ncol = 2)
   vogon_cov[1,1] <- rnorm(1, 60)
   vogon_cov[1,2] <- rnorm(1, 80)
@@ -132,7 +130,7 @@ vogons <- function(n,
   colnames(hw_data) <- c("height", "weight")
   age <- round(runif(n, min = 30, max = 180)) #born/appear at age 30 fully educated in some administrative duty
   race <- as.factor(rep("vogon", n))
-  sex <- rep("no", n)
+  sex <- rep("no thanks", n)
   iq <- round(rnorm(n, 120, 5))
   occupation <- hitchr::vogon_occupations[sample(1:nrow(hitchr::vogon_occupations), size = n, replace = T), ]
   names(occupation) <- "occupation"
@@ -141,9 +139,3 @@ vogons <- function(n,
   vogon_sample <- vogon_sample[, stats]
   return(vogon_sample)
 }
-
-
-# create generic function that can be used to invoke additional parameters for the
-  # race-sample-generators, so that each race function does not have to contain
-  # the same repeated parameters. Only required input is 'n', and the rest can be
-  # passed through to the generic function.
