@@ -2,7 +2,7 @@
 % Please edit documentation in R/samples.R
 \name{vogons}
 \alias{vogons}
-\title{Function to create a random sample of vogons}
+\title{Function to create a random sample of Vogons}
 \usage{
 vogons(n, stats = stats_index(), ...)
 }
@@ -15,5 +15,5 @@ list of available stats.}
 \item{...}{currently serves no function.}
 }
 \description{
-Function to create a random sample of vogons
+Function to create a random sample of Vogons
 }

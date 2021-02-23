@@ -54,7 +54,7 @@ golgafrinchans <- function(n,
   colnames(females) <- c_names
   females$sex <- rep("female", n_female)
   age <- round(runif(n, 0, 120))
-  occupation <- sample(c("telephone sanitiser", "lawyer", "hairdresser"),
+  occupation <- sample(c("Telephone Sanitiser", "Lawyer", "Hairdresser"),
                        size = n, replace = T, ...)
   golgafrinchan_sample <- rbind(males, females)
   golgafrinchan_sample$IQ <- round(golgafrinchan_sample$IQ)

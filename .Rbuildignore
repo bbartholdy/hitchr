@@ -4,3 +4,4 @@
 _misc
 .github
 ^\.github$
+^README\.Rmd$
