@@ -45,7 +45,7 @@ hitchr:::race_index()
 Stats currently available:
 
 ```{r}
-hitchr::stats_index()
+hitchr:::stats_index()
 ```
 
 
