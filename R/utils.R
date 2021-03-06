@@ -22,8 +22,8 @@ missing_vector <- function(x, na_prob){
 missing <- function(x, na_prob = 0.1, cols = seq_along(x)){
   if(na_prob > 1){
     na_prob <- na_prob / 100
-    warning("'missing_prob' must be a probability between 0 and 1 \n
-              Input was automatically divided by 100.")
+    warning(paste("'missing_prob' must be a probability between 0 and 1 \n
+              Input was automatically replaced by", na_prob))
   }
   if(is.null(dim(x))){
     x <- missing_vector(x, na_prob = na_prob)
@@ -43,7 +43,7 @@ missing <- function(x, na_prob = 0.1, cols = seq_along(x)){
 #' @importFrom dplyr as_tibble
 #'
 #' @export
-h2g2 <- function(n, race = race_index(), missing_prob = NULL, ...){
+h2g2 <- function(n, race = race_index(), na_prob = NULL, ...){
 
    race <- match.arg(race, race_index(), T)
    race <- as.list(race)
@@ -52,8 +52,8 @@ h2g2 <- function(n, race = race_index(), missing_prob = NULL, ...){
    x <- as.data.frame(data.table::rbindlist(x, use.names = T))
    h2g2_sample <- x[sample(1:nrow(x), size = n, replace = F), ]
   # create randomly missing variables if input is used
-  if(!is.null(missing_prob)){
-    h2g2_sample <- missing(h2g2_sample, na_prob = missing_prob)
+  if(!is.null(na_prob)){
+    h2g2_sample <- missing(h2g2_sample, na_prob = na_prob, cols = seq_along(h2g2_sample))
   }
   h2g2_sample <- dplyr::as_tibble(h2g2_sample)
   return(h2g2_sample)

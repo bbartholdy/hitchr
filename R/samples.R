@@ -37,8 +37,15 @@ golgafrinchans <- function(n,
   race <- rep("golgafrinchan", n)
   n_male <- floor(n * 0.5107)
   n_female <- n - n_male
-  male_cov <- matrix(c(52.89566, 56.31551, 40, 56.31551, 80.5074, 10, 40, 10, 400),3,3)
-  female_cov <- matrix(c(46.90279, 50.20551, 40, 50.20551, 74.45026, 10, 40, 10, 100),3,3)
+  male_cov <- matrix(nrow = 3, ncol = 3)
+  male_cov[1,] <- c(52.89566, 56.31551, rnorm(1, 40, 1))
+  male_cov[2,] <- c(56.31551, 80.5074, rnorm(1, 10, 1))
+  male_cov[3,] <- c(male_cov[1,3], male_cov[2,3] ,rnorm(1, 100, 1))
+
+  female_cov <- matrix(nrow = 3, ncol = 3)
+  female_cov[1,] <- c(46.90279, 50.20551, rnorm(1, 40, 1))
+  female_cov[2,] <- c(50.20551, 74.45026, rnorm(1, 10, 1))
+  female_cov[3,] <- c(female_cov[1,3], female_cov[2,3], rnorm(1,100))
   c_names <- c("height", "weight", "IQ")
   males <- as.data.frame(
     MASS::mvrnorm(n_male,
@@ -124,6 +131,24 @@ humans <- function(n, stats = stats_index(), ...){
 
 #' Function to create a random sample of Vogons
 #'
+#' @details The Guide on Vogons: "They are one of the most unpleasant races in the
+#' Galaxy -- not actually evil, but bad-tempered, bureaucratic, officious and callous.
+#' They wouldn't even lift a finger to save their own grandmothers from the
+#' Ravenous Bugblatter Beast of Traal without orders signed in triplicate, sent in,
+#' sent back, queried, lost, found, subjected to public inquiry, lost again, and
+#' finally buried in soft peat for three months and recycled as firelighters."
+#'
+#' "The best way to get a drink out of a Vogon is to stick your finger down his
+#' throat, and the best way to irritate him is to feed his grandmother to the
+#' Ravenous Bugblatter Beast of Traal."
+#'
+#' "On no account allow a Vogon to read poetry at you."
+#'
+#' -- *Douglas Adams, Hitchiker's Guide to the Galaxy*
+#'
+#' Most notable about Vogons is that the majority of occupations are
+#' administrative in nature; they are born/appear fully educated for said occupation;
+#' and the males and females of the species are completely indistinguishable.
 #' @inheritParams humans
 #' @export
 vogons <- function(n, stats = stats_index(), ...){
@@ -137,7 +162,7 @@ vogons <- function(n, stats = stats_index(), ...){
   colnames(hw_data) <- c("height", "weight")
   age <- round(runif(n, min = 30, max = 180)) #born/appear at age 30 fully educated in some administrative duty
   race <- as.factor(rep("vogon", n))
-  sex <- rep("no thanks", n)
+  sex <- sample(c("male", "female"), n, replace = T)
   iq <- round(rnorm(n, 120, 5))
   occupation <- hitchr::vogon_occupations[sample(1:nrow(hitchr::vogon_occupations), size = n, replace = T), ]
   names(occupation) <- "occupation"

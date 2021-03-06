@@ -17,3 +17,23 @@ list of available stats.}
 \description{
 Function to create a random sample of Vogons
 }
+\details{
+The Guide on Vogons: "They are one of the most unpleasant races in the
+Galaxy -- not actually evil, but bad-tempered, bureaucratic, officious and callous.
+They wouldn't even lift a finger to save their own grandmothers from the
+Ravenous Bugblatter Beast of Traal without orders signed in triplicate, sent in,
+sent back, queried, lost, found, subjected to public inquiry, lost again, and
+finally buried in soft peat for three months and recycled as firelighters."
+
+"The best way to get a drink out of a Vogon is to stick your finger down his
+throat, and the best way to irritate him is to feed his grandmother to the
+Ravenous Bugblatter Beast of Traal."
+
+"On no account allow a Vogon to read poetry at you."
+
+-- \emph{Douglas Adams, Hitchiker's Guide to the Galaxy}
+
+Most notable about Vogons is that the majority of occupations are
+administrative in nature; they are born/appear fully educated for said occupation;
+and the males and females of the species are completely indistinguishable.
+}
