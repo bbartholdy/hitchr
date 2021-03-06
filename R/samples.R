@@ -6,10 +6,10 @@ betelgeusians <- function(n, stats = stats_index(),
                           ...){
   race <- rep("betelgeusian", n)
   sigma <- matrix(nrow = 2, ncol = 2)
-  sigma[1,1] <- rnorm(1, 70, 1)
-  sigma[1,2] <- rnorm(1, 90, 1)
+  sigma[1,1] <- rnorm(1, 80, 1)
+  sigma[1,2] <- rnorm(1, 70, 1)
   sigma[2,1] <- sigma[1,2]
-  sigma[2,2] <- rnorm(1, 70, 1)
+  sigma[2,2] <- rnorm(1, 100, 1)
   betel_hw <- as.data.frame(
     MASS::mvrnorm(n, c(168.5736, 73.2282), sigma, empirical = T)
   )
@@ -86,8 +86,15 @@ humans <- function(n, stats = stats_index(), ...){
 
   # height and weight stats from ?
     # covariance matrices for height, weight, and IQ
-  male_cov <- matrix(c(52.89566, 56.31551, 40, 56.31551, 80.5074, 10, 40, 10, 400),3,3)
-  female_cov <- matrix(c(46.90279, 50.20551, 40, 50.20551, 74.45026, 10, 40, 10, 100),3,3)
+  male_cov <- matrix(nrow = 3, ncol = 3)
+  male_cov[1,] <- c(52.89566, 56.31551, rnorm(1, 40, 1))
+  male_cov[2,] <- c(56.31551, 80.5074, rnorm(1, 10, 1))
+  male_cov[3,] <- c(male_cov[1,3], male_cov[2,3] ,rnorm(1, 100, 1))
+
+  female_cov <- matrix(nrow = 3, ncol = 3)
+  female_cov[1,] <- c(46.90279, 50.20551, rnorm(1, 40, 1))
+  female_cov[2,] <- c(50.20551, 74.45026, rnorm(1, 10, 1))
+  female_cov[3,] <- c(female_cov[1,3], female_cov[2,3], rnorm(1,100))
     # random multivariate normal data frame with pre-defined means
   c_names <- c("height", "weight", "IQ")
   males <- as.data.frame(
