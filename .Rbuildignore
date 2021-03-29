@@ -1,7 +1,7 @@
 ^hitchr\.Rproj$
 ^\.Rproj\.user$
 ^LICENSE\.md$
-_misc
-.github
 ^\.github$
 ^README\.Rmd$
+^occupations$
+^_misc$

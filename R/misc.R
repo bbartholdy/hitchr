@@ -1,24 +1,13 @@
-#' This function creates randomly generated Vogon poetry, thought to be the second
-#' worst poetry in the universe.
+#' This function creates randomly generated Vogon poetry, thought to be the third
+#' worst poetry in the universe, only surpassed by that of the Azgoths of Kria,
+#' and Paula Nancy Millstone Jennings of Sussex.
 #'
 #' @export
 vogon_poetry <- function(){
   # really really bad poetry
 }
 
-#' Generates a random statement indicating the odds of an event
-#'
-#' @export
-inf_improb_dr <- function(){
-  prob <- runif(1, max = 10^9)
-  prob <- format(round(prob), big.mark = ",")
-  paste(prob, "to 1 against")
-}
-
-#' Generates a random statement indicating the odds of an event
-#'
-#' @export
-infinite_improbability_drive <- function(){
+iidr <- function(){
   prob <- runif(1, max = 10^9)
   prob <- format(round(prob), big.mark = ",")
   paste(prob, "to 1 against")

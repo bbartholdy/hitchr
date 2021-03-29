@@ -2,10 +2,6 @@
 missing_vector <- function(x, na_prob){
   x[sample(seq_along(x), round(na_prob * length(x)))] <- NA
   return(x)
-  # or
-
-  # ind <- which(x %in% sample(x, length(x) * prob))
-  # x[ind] <- NA
 }
 
 # From 'wakefield' package
@@ -59,12 +55,45 @@ h2g2 <- function(n, race = race_index(), na_prob = NULL, ...){
   return(h2g2_sample)
 }
 
+#' The Infinite Improbability Drive
+#'
+#' Generates a random sample of individuals.
+#'
+#' @inheritParams h2g2
+#' @param quiet if FALSE, will print a statement about the odds of a random event.
+#' Default is TRUE.
+#' @export
+infinite_improbability_drive <- function(n, race = race_index(), na_prob = NULL,
+                                         quiet = T, ...){
+
+  race <- match.arg(race, race_index(), T)
+  race <- as.list(race)
+  args <- list(n, ...)
+  x <- lapply(race, do.call, args)
+  x <- as.data.frame(data.table::rbindlist(x, use.names = T))
+  h2g2_sample <- x[sample(1:nrow(x), size = n, replace = F), ]
+  # create randomly missing variables if input is used
+  if(!is.null(na_prob)){
+    h2g2_sample <- missing(h2g2_sample, na_prob = na_prob, cols = seq_along(h2g2_sample))
+  }
+  h2g2_sample <- dplyr::as_tibble(h2g2_sample)
+  if(quiet == FALSE){
+    iidr()
+  }
+  return(h2g2_sample)
+}
+
 race_index <- function(){
   race <- c("betegeusians", "dentrassi", "dolphins", "golgafrinchans",
             "haggunenons", "humans", "jatravartids", "krikkits",
             "magratheans", "mice", "vogons")
-  current <- c("humans", "vogons", "golgafrinchans")
+  current <- c("humans", "vogons", "golgafrinchans", "dentrassi")
   return(current)
+}
+
+#' @inheritParams infinite_improbability_drive
+inf_improb_dr <- function(...){
+  infinite_improbability_drive(...)
 }
 
 stats_index <- function(){

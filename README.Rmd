@@ -26,7 +26,20 @@ To install:
 remotes::install_github("bbartholdy/hitchr")
 ```
 
-Example:
+:exclamation:**Important Note**:exclamation:
+
+This package deals with the concept of 'race' in a strictly biological sense;
+i.e., there is no way to biologically distinguish discrete races within the 
+*Homo sapiens* species (despite claims to the contrary).
+
+This should not distract from the very real concept of social 'race', and the social
+injustice that currently persists across the globe.
+
+[BlackLivesMatter](https://blacklivesmatter.com/)
+
+[StopAsianHate](https://www.stopasianhate.info/)
+
+## Examples
 
 ```{r eval=FALSE}
 hitchr::h2g2(10) # generates a random sample of 10 individuals

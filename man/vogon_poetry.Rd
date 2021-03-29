@@ -2,12 +2,14 @@
 % Please edit documentation in R/misc.R
 \name{vogon_poetry}
 \alias{vogon_poetry}
-\title{This function creates randomly generated Vogon poetry, thought to be the second
-worst poetry in the universe.}
+\title{This function creates randomly generated Vogon poetry, thought to be the third
+worst poetry in the universe, only surpassed by that of the Azgoths of Kria,
+and Paula Nancy Millstone Jennings of Sussex.}
 \usage{
 vogon_poetry()
 }
 \description{
-This function creates randomly generated Vogon poetry, thought to be the second
-worst poetry in the universe.
+This function creates randomly generated Vogon poetry, thought to be the third
+worst poetry in the universe, only surpassed by that of the Azgoths of Kria,
+and Paula Nancy Millstone Jennings of Sussex.
 }

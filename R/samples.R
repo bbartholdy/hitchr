@@ -17,9 +17,54 @@ betelgeusians <- function(n, stats = stats_index(),
   age <- runif(n, 0, 320)
 }
 
+#' Function to create a random sample of Dentrassi
+#'
+#' @details The Dentrassi are described as 'an unruly tribe of
+#' gourmands, a wild but pleasant bunch whom the Vogons had recently taken to employ
+#' as catering staff on their long-haul fleets (...).
+#'
+#' -- *Douglas Adams, Hitchiker's Guide to the Galaxy*
 #' @inheritParams humans
-dentrassi <- function(...){
-  # and so on...
+#' @export
+dentrassi <- function(n, stats = stats_index(), ...){
+  if(n < 5) stop("'n' must be greater than or equal to 5")
+  race <- rep("dentrassi", n)
+  n_male <- round(n * rnorm(1, 0.5, 0.05))
+  n_female <- n - n_male
+  male_cov <- matrix(nrow = 2, ncol = 2)
+  male_cov[1,1] <- rnorm(1, 80, 1)
+  male_cov[1,2] <- rnorm(1, 70, 1)
+  male_cov[2,1] <- male_cov[1,2]
+  male_cov[2,2] <- rnorm(1, 100, 1)
+
+  female_cov <- matrix(nrow = 2, ncol = 2)
+  female_cov[1,1] <- rnorm(1, 80, 1)
+  female_cov[1,2] <- rnorm(1, 70, 1)
+  female_cov[2,1] <- female_cov[1,2]
+  female_cov[2,2] <- rnorm(1, 100, 1)
+  c_names <- c("height", "weight")
+  males <- as.data.frame(
+    MASS::mvrnorm(n_male,
+                  c(rnorm(1, 215, 10), rnorm(1, 180, 20)),
+                  male_cov))
+  colnames(males) <- c_names
+  males$sex <- rep("male", n_male)
+  females <- as.data.frame(
+    MASS::mvrnorm(n_female,
+                  c(rnorm(1, 190, 10), rnorm(1, 115, 15)),
+                  female_cov)
+  )
+  colnames(females) <- c_names
+  females$sex <- rep("female", n_female)
+  occupation <- hitchr::dentrassi_occupations[sample(1:nrow(hitchr::dentrassi_occupations),
+                                                 size = n, replace = T), ]
+  dentrassi_sample <- rbind(males, females)
+  dentrassi_sample$IQ <- round(rnorm(n, 110, 15))
+  dentrassi_sample$age <- round(runif(n, 10, 80))
+  dentrassi_sample <- data.frame("race" = race, dentrassi_sample,
+                                     "occupation" = occupation)
+  dentrassi_sample <- dentrassi_sample[, stats]
+  return(dentrassi_sample)
 }
 
 #' @inheritParams humans
@@ -31,33 +76,33 @@ dolphins <- function(...){
 #'
 #' @inheritParams humans
 #' @export
-golgafrinchans <- function(n,
-                           stats = stats_index(),
-                           ...){
+golgafrinchans <- function(n, stats = stats_index(), ...){
+  if(n < 5) stop("'n' must be greater than or equal to 5")
   race <- rep("golgafrinchan", n)
   n_male <- floor(n * 0.5107)
   n_female <- n - n_male
   male_cov <- matrix(nrow = 3, ncol = 3)
-  male_cov[1,] <- c(52.89566, 56.31551, rnorm(1, 40, 1))
-  male_cov[2,] <- c(56.31551, 80.5074, rnorm(1, 10, 1))
-  male_cov[3,] <- c(male_cov[1,3], male_cov[2,3] ,rnorm(1, 100, 1))
-
-  female_cov <- matrix(nrow = 3, ncol = 3)
-  female_cov[1,] <- c(46.90279, 50.20551, rnorm(1, 40, 1))
-  female_cov[2,] <- c(50.20551, 74.45026, rnorm(1, 10, 1))
-  female_cov[3,] <- c(female_cov[1,3], female_cov[2,3], rnorm(1,100))
+  repeat {
+    male_cov[1,] <- c(52.89566, 56.31551, rnorm(1, 40, 1))
+    male_cov[2,] <- c(56.31551, 80.5074, rnorm(1, 10, 1))
+    male_cov[3,] <- c(male_cov[1,3], male_cov[2,3] ,rnorm(1, 100, 1))
+    if(det(male_cov) > 0) break
+  }
+  repeat {
+    female_cov <- matrix(nrow = 3, ncol = 3)
+    female_cov[1,] <- c(46.90279, 50.20551, rnorm(1, 40, 1))
+    female_cov[2,] <- c(50.20551, 74.45026, rnorm(1, 10, 1))
+    female_cov[3,] <- c(female_cov[1,3], female_cov[2,3], rnorm(1,100, 1))
+    if(det(female_cov) > 0) break
+  }
   c_names <- c("height", "weight", "IQ")
-  males <- as.data.frame(
-    MASS::mvrnorm(n_male,
-                  c(175.3269, 84.83123, 100),
-                  male_cov))
+  males <- as.data.frame(MASS::mvrnorm(n_male,
+                                       c(175.3269, 84.83123, 100), male_cov))
   colnames(males) <- c_names
   males$sex <- rep("male", n_male)
-  females <- as.data.frame(
-    MASS::mvrnorm(n_female,
-                  c(161.8203, 61.62517, 101),
-                  female_cov)
-  )
+
+  females <- as.data.frame(MASS::mvrnorm(n_female,
+                                         c(161.8203, 61.62517, 101), female_cov))
   colnames(females) <- c_names
   females$sex <- rep("female", n_female)
   age <- round(runif(n, 0, 120))
@@ -71,6 +116,20 @@ golgafrinchans <- function(n,
   return(golgafrinchan_sample)
 }
 
+haggunenons <- function(n, stats = stats_index(), ...){
+  race <- rep("Haggunenon", n)
+  sigma <- matrix(nrow = 2, ncol = 2)
+  sigma[1,] <- c(4000, 2000)
+  sigma
+  haggunenon_sample <- mvrnorm(n, c(180, 100), sigma, empirical = T)
+  haggunenon_sample <- as_tibble(haggunenon_sample)
+  IQ <- round(rnorm(n, 100, 40))
+  age <- runif(n, 1, 10) #no data on age, but that type of rapid evolution is hardly sustainable
+  sex <- sample(c("male", "female", "unknown", "hybrid"), n, replace = T) #many different sexes
+  haggunenon_sample <- tibble(race, sex, age, haggunenon_sample, IQ)
+  occupation <- "????"
+}
+
 #' Random sample of humans
 #'
 #' The entry in The Guide for Earth: "Mostly harmless."
@@ -81,27 +140,32 @@ golgafrinchans <- function(n,
 #' @param ... currently serves no function.
 #' @export
 humans <- function(n, stats = stats_index(), ...){
+  if(n < 5) stop("'n' must be greater than or equal to 5")
   race <- rep("human", n)
     # sex ratios
-  n_male <- floor(n * 0.5107)
+  n_male <- round(n * rnorm(1, 0.5107, 0.01))
+  n_inter <- round(n * rnorm(1, 0.003, 0.001)) # need better method
   n_female <- n - n_male
-  #n_female <- floor(n * 0.4863)
-  #n_inter <- n - n_male - n_female
-  #  Male  51.07
+    #  Male  51.07
   #  Female  48.63
   #  Intersex  0.30
 
   # height and weight stats from ?
     # covariance matrices for height, weight, and IQ
   male_cov <- matrix(nrow = 3, ncol = 3)
+  repeat {
   male_cov[1,] <- c(52.89566, 56.31551, rnorm(1, 40, 1))
   male_cov[2,] <- c(56.31551, 80.5074, rnorm(1, 10, 1))
   male_cov[3,] <- c(male_cov[1,3], male_cov[2,3] ,rnorm(1, 100, 1))
-
+  if(det(male_cov) > 0) break
+  }
+  repeat {
   female_cov <- matrix(nrow = 3, ncol = 3)
   female_cov[1,] <- c(46.90279, 50.20551, rnorm(1, 40, 1))
   female_cov[2,] <- c(50.20551, 74.45026, rnorm(1, 10, 1))
-  female_cov[3,] <- c(female_cov[1,3], female_cov[2,3], rnorm(1,100))
+  female_cov[3,] <- c(female_cov[1,3], female_cov[2,3], rnorm(1,100, 1))
+  if(det(female_cov) > 0) break
+  }
     # random multivariate normal data frame with pre-defined means
   c_names <- c("height", "weight", "IQ")
   males <- as.data.frame(
@@ -117,11 +181,12 @@ humans <- function(n, stats = stats_index(), ...){
     )
   colnames(females) <- c_names
   females$sex <- rep("female", n_female)
-  age <- round(runif(n, 0, 120))
+  age <- round(runif(n, 18, 120)) # only "adults"
   occupation <- hitchr::human_occupations[sample(1:nrow(hitchr::human_occupations), size = n, replace = T), ]
   names(occupation) <- "occupation"
   occupation <- as.factor(occupation)
   human_sample <- rbind(males, females)
+  human_sample$sex[sample(1:nrow(human_sample), size = n_inter)] <- "intersex"
   human_sample$sex <- as.factor(human_sample$sex)
   human_sample$IQ <- round(human_sample$IQ)
   human_sample <- data.frame("race" = race , human_sample, "age" = age, "occupation" = occupation)
@@ -152,21 +217,24 @@ humans <- function(n, stats = stats_index(), ...){
 #' @inheritParams humans
 #' @export
 vogons <- function(n, stats = stats_index(), ...){
+  if(n < 5) stop("'n' must be greater than or equal to 5")
   vogon_cov <- matrix(nrow = 2, ncol = 2)
   vogon_cov[1,1] <- rnorm(1, 60)
   vogon_cov[1,2] <- rnorm(1, 80)
   vogon_cov[2,1] <- vogon_cov[1,2]
   vogon_cov[2,2] <- rnorm(1, 150)
-  hw_data <- MASS::mvrnorm(n, c(230, 350), vogon_cov, empirical = T)
-  hw_data <- as.data.frame(hw_data)
-  colnames(hw_data) <- c("height", "weight")
-  age <- round(runif(n, min = 30, max = 180)) #born/appear at age 30 fully educated in some administrative duty
-  race <- as.factor(rep("vogon", n))
-  sex <- sample(c("male", "female"), n, replace = T)
-  iq <- round(rnorm(n, 120, 5))
+  vogon_sample <- as.data.frame(
+    MASS::mvrnorm(n, c(230, 350), vogon_cov, empirical = T))
+  colnames(vogon_sample) <- c("height", "weight")
+  vogon_sample$age <- round(runif(n, min = 30, max = 180)) #born/appear at age 30 fully educated in some administrative duty
+  vogon_sample$race <- as.factor(rep("vogon", n))
+  sex_prob <- c(rnorm(2, 0.4, 0.01))
+    sex_prob <- c(sex_prob, 1 - sum(sex_prob))
+  vogon_sample$sex <- sample(c("male", "female", "other"), n, replace = T, prob = sex_prob)
+  vogon_sample$IQ <- round(rnorm(n, 120, 5))
   occupation <- hitchr::vogon_occupations[sample(1:nrow(hitchr::vogon_occupations), size = n, replace = T), ]
   names(occupation) <- "occupation"
-  vogon_sample <- data.frame("race" = race, "sex" = sex, "age" = age, hw_data, "IQ" = iq,
+  vogon_sample <- data.frame(vogon_sample,
                              "occupation" = occupation)
   vogon_sample <- vogon_sample[, stats]
   return(vogon_sample)
