@@ -78,7 +78,7 @@ infinite_improbability_drive <- function(n, race = race_index(), na_prob = NULL,
   }
   h2g2_sample <- dplyr::as_tibble(h2g2_sample)
   if(quiet == FALSE){
-    iidr()
+    print(iidr())
   }
   return(h2g2_sample)
 }
@@ -92,6 +92,7 @@ race_index <- function(){
 }
 
 #' @inheritParams infinite_improbability_drive
+#' @export
 inf_improb_dr <- function(...){
   infinite_improbability_drive(...)
 }
