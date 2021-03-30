@@ -218,11 +218,14 @@ humans <- function(n, stats = stats_index(), ...){
 #' @export
 vogons <- function(n, stats = stats_index(), ...){
   if(n < 5) stop("'n' must be greater than or equal to 5")
+  repeat {
   vogon_cov <- matrix(nrow = 2, ncol = 2)
-  vogon_cov[1,1] <- rnorm(1, 60)
+  vogon_cov[1,1] <- rnorm(1, 60, 5)
   vogon_cov[1,2] <- rnorm(1, 80)
   vogon_cov[2,1] <- vogon_cov[1,2]
-  vogon_cov[2,2] <- rnorm(1, 150)
+  vogon_cov[2,2] <- rnorm(1, 150, 10)
+  if(det(vogon_cov) > 0) break
+  }
   vogon_sample <- as.data.frame(
     MASS::mvrnorm(n, c(230, 350), vogon_cov, empirical = T))
   colnames(vogon_sample) <- c("height", "weight")
