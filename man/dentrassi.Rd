@@ -2,7 +2,7 @@
 % Please edit documentation in R/samples.R
 \name{dentrassi}
 \alias{dentrassi}
-\title{Function to create a random sample of Dentrassis}
+\title{Function to create a random sample of Dentrassi}
 \usage{
 dentrassi(n, stats = stats_index(), ...)
 }
@@ -15,10 +15,10 @@ list of available stats.}
 \item{...}{currently serves no function.}
 }
 \description{
-Function to create a random sample of Dentrassis
+Function to create a random sample of Dentrassi
 }
 \details{
-The Dentrassi are described in the book as 'an unruly tribe of
+The Dentrassi are described as 'an unruly tribe of
 gourmands, a wild but pleasant bunch whom the Vogons had recently taken to employ
 as catering staff on their long-haul fleets (...).
 

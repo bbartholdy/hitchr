@@ -38,21 +38,21 @@ and the social injustice that currently persists across the globe.
 ## Examples
 
 ``` r
-hitchr::h2g2(10) # generates a random sample of 10 individuals
+hitchr::infinite_improbability_drive(10) # generates a random sample of 10 individuals
 ```
 
-| race          | sex    | age |   height |    weight |  IQ | occupation                                |
-|:--------------|:-------|----:|---------:|----------:|----:|:------------------------------------------|
-| human         | male   |  49 | 177.3992 |  88.50347 |  96 | Photographic Process Workers              |
-| vogon         | male   |  79 | 230.3999 | 354.88851 | 119 | Medical Records Administrator             |
-| vogon         | other  | 131 | 230.3287 | 360.01611 | 119 | IT Administrator (Information Technology) |
-| golgafrinchan | female |  62 | 163.7520 |  64.17207 | 105 | Lawyer                                    |
-| golgafrinchan | male   |  17 | 165.5058 |  69.32786 | 108 | Lawyer                                    |
-| human         | female |  40 | 161.1218 |  59.51492 |  99 | Physical Education Instructor             |
-| vogon         | female | 168 | 232.5286 | 353.52839 | 116 | Marina Boat Charter Administrator         |
-| human         | male   |  32 | 178.9334 |  88.69293 | 106 | Hand Sewer                                |
-| vogon         | male   | 170 | 232.1298 | 353.38423 | 110 | Middle School Administrator               |
-| vogon         | female | 135 | 214.3356 | 334.19841 | 114 | Bureaucratic Administrative Assistant     |
+| race          | sex    | age |   height |    weight |  IQ | occupation                      |
+|:--------------|:-------|----:|---------:|----------:|----:|:--------------------------------|
+| golgafrinchan | female | 115 | 157.3272 |  49.31108 | 106 | Hairdresser                     |
+| human         | male   | 113 | 180.6978 |  86.50175 | 110 | Dietitian and Nutritionist      |
+| dentrassi     | male   |  80 | 208.7103 | 171.25330 | 116 | Executive Chef                  |
+| vogon         | female | 117 | 239.2134 | 365.97064 | 124 | Special Education Administrator |
+| vogon         | other  | 161 | 233.2702 | 360.11950 | 116 | High School Administrator       |
+| human         | female |  49 | 163.5759 |  62.58835 | 104 | Computer Hardware Technician    |
+| human         | male   | 106 | 184.9143 |  91.41692 | 111 | Septic Tank and Sewer Servicers |
+| dentrassi     | male   |  23 | 191.7667 | 156.72718 | 109 | Catering Assistant              |
+| dentrassi     | female |  40 | 167.9214 |  91.01133 | 114 | Fish Chef                       |
+| human         | female |  75 | 158.3534 |  49.97074 | 114 | Child Care Center Administrator |
 
 Races currently available:
 
@@ -60,7 +60,7 @@ Races currently available:
 hitchr:::race_index()
 ```
 
-    ## [1] "humans"         "vogons"         "golgafrinchans"
+    ## [1] "humans"         "vogons"         "golgafrinchans" "dentrassi"
 
 Stats currently available:
 
@@ -70,3 +70,20 @@ hitchr:::stats_index()
 
     ## [1] "race"       "sex"        "age"        "height"     "weight"    
     ## [6] "IQ"         "occupation"
+
+Sexual dimorphism in the height of males and females of different races:
+
+``` r
+hitchr_sample <- hitchr::inf_improb_dr(1000)
+hitchr_sample %>%
+  filter(sex == "male" | sex == "female") %>%
+  group_by(race) %>%
+  ggplot(aes(x = sex, y = height, fill = race)) +
+    geom_boxplot() +
+    theme_minimal() +
+    scale_fill_viridis_d() +
+    facet_wrap(~ race) +
+    theme(legend.position = "none")
+```
+
+![](README_files/figure-gfm/sex-dim-1.png)<!-- -->

@@ -5,6 +5,7 @@ output: github_document
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 library(hitchr)
+library(tidyverse)
 random_sample <- h2g2(10)
 ```
 
@@ -42,7 +43,7 @@ injustice that currently persists across the globe.
 ## Examples
 
 ```{r eval=FALSE}
-hitchr::h2g2(10) # generates a random sample of 10 individuals
+hitchr::infinite_improbability_drive(10) # generates a random sample of 10 individuals
 ```
 
 ```{r echo=FALSE}
@@ -51,15 +52,29 @@ knitr::kable(random_sample)
 
 Races currently available:
 
-```{r}
+```{r race-index}
 hitchr:::race_index()
 ```
 
 Stats currently available:
 
-```{r}
+```{r stats-index}
 hitchr:::stats_index()
 ```
 
+Sexual dimorphism in the height of males and females of different races:
+
+```{r sex-dim}
+hitchr_sample <- hitchr::inf_improb_dr(1000)
+hitchr_sample %>%
+  filter(sex == "male" | sex == "female") %>%
+  group_by(race) %>%
+  ggplot(aes(x = sex, y = height, fill = race)) +
+    geom_boxplot() +
+    theme_minimal() +
+    scale_fill_viridis_d() +
+    facet_wrap(~ race) +
+    theme(legend.position = "none")
+```
 
 
