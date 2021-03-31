@@ -4,7 +4,7 @@
 \alias{missing}
 \title{Inserts NAs throughout a data frame at random}
 \usage{
-missing(x, na_prob = 0.1, cols = seq_along(x))
+missing(x, na_prob = 0.1, cols = seq_along(x), symm = T)
 }
 \arguments{
 \item{x}{Data frame or vector.}
@@ -14,6 +14,9 @@ Default is 0.1, i.e. each variable will have 10\% NAs.}
 
 \item{cols}{numeric. In which columns to insert NAs. Default is all columns.
 To leave out the first column, use cols = -1.}
+
+\item{symm}{logical. whether the missing values should be inserted symmetrically,
+i.e., whether each column should contain the same number of NAs.}
 }
 \description{
 Inserts NAs throughout a data frame at random
