@@ -181,15 +181,16 @@ humans <- function(n, stats = stats_index(), ...){
     )
   colnames(females) <- c_names
   females$sex <- rep("female", n_female)
-  age <- round(runif(n, 18, 120)) # only "adults"
   occupation <- hitchr::human_occupations[sample(1:nrow(hitchr::human_occupations), size = n, replace = T), ]
   names(occupation) <- "occupation"
-  occupation <- as.factor(occupation)
   human_sample <- rbind(males, females)
+  human_sample$race <- race
   human_sample$sex[sample(1:nrow(human_sample), size = n_inter)] <- "intersex"
   human_sample$sex <- as.factor(human_sample$sex)
+  human_sample$age <- round(runif(n, 18, 120)) # only "adults"
   human_sample$IQ <- round(human_sample$IQ)
-  human_sample <- data.frame("race" = race , human_sample, "age" = age, "occupation" = occupation)
+  human_sample$occupation[human_sample$age > 70] <- paste(human_sample$occupation, "(retired)")
+  human_sample$occupation <- as.factor(occupation)
   human_sample <- human_sample[, stats]
   return(human_sample)
 }
