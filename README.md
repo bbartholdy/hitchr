@@ -41,18 +41,18 @@ and the social injustice that currently persists across the globe.
 hitchr::infinite_improbability_drive(10) # generates a random sample of 10 individuals
 ```
 
-| race          | sex    | age |   height |    weight |  IQ | occupation                           |
-|:--------------|:-------|----:|---------:|----------:|----:|:-------------------------------------|
-| golgafrinchan | male   |  48 | 181.4208 |  92.60239 | 102 | Lawyer                               |
-| human         | female |  64 | 169.1606 |  69.90690 | 102 | Disk Jockey                          |
-| human         | male   | 111 | 169.6223 |  77.83919 |  94 | Purchasing Manager                   |
-| human         | female |  23 | 160.9582 |  54.17273 | 109 | Medical Photographer                 |
-| dentrassi     | female |  52 | 220.3259 | 147.24609 | 115 | Pantry Chef                          |
-| vogon         | male   | 163 | 234.9890 | 358.00241 | 120 | Compliance Officer                   |
-| dentrassi     | female |  66 | 214.4455 | 147.62405 | 120 | Bartender (Full-Time)                |
-| vogon         | male   | 144 | 230.6695 | 349.59985 | 117 | Education and Training Administrator |
-| human         | female |  72 | 163.3778 |  65.67301 |  97 | Tax Examiner                         |
-| vogon         | female | 108 | 213.6132 | 323.56344 | 127 | Compensation Administrator           |
+| race          | sex    | age |   height |    weight |  IQ | occupation                              |
+|:--------------|:-------|----:|---------:|----------:|----:|:----------------------------------------|
+| vogon         | female | 161 | 221.4540 | 341.73056 | 114 | Marina Boat Charter Administrator       |
+| golgafrinchan | male   |  58 | 168.8087 |  78.03019 |  99 | Hairdresser                             |
+| human         | male   |  39 | 167.7916 |  78.94081 |  87 | Overhead Door Installer                 |
+| human         | male   |  65 | 177.5448 |  90.65469 |  96 | Animal Husbandry Worker Supervisor      |
+| human         | male   |  69 | 173.3359 |  80.08949 | 112 | Hardwood Floor Finisher                 |
+| human         | female | 109 | 158.1704 |  49.40254 | 105 | Art Director                            |
+| vogon         | male   | 158 | 221.4680 | 347.17172 | 114 | Airline Flight Operations Administrator |
+| dentrassi     | female |  19 | 195.7132 | 127.11481 | 120 | Catering Manager                        |
+| human         | female | 116 | 158.8244 |  58.51896 |  98 | Job Printer (Graphic Arts)              |
+| vogon         | female | 162 | 223.8171 | 329.11149 | 131 | Marina Boat Charter Administrator       |
 
 Races currently available:
 
