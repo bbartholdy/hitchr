@@ -41,18 +41,18 @@ and the social injustice that currently persists across the globe.
 hitchr::infinite_improbability_drive(10) # generates a random sample of 10 individuals
 ```
 
-| race          | sex    | age |   height |    weight |  IQ | occupation                              |
-|:--------------|:-------|----:|---------:|----------:|----:|:----------------------------------------|
-| vogon         | female | 161 | 221.4540 | 341.73056 | 114 | Marina Boat Charter Administrator       |
-| golgafrinchan | male   |  58 | 168.8087 |  78.03019 |  99 | Hairdresser                             |
-| human         | male   |  39 | 167.7916 |  78.94081 |  87 | Overhead Door Installer                 |
-| human         | male   |  65 | 177.5448 |  90.65469 |  96 | Animal Husbandry Worker Supervisor      |
-| human         | male   |  69 | 173.3359 |  80.08949 | 112 | Hardwood Floor Finisher                 |
-| human         | female | 109 | 158.1704 |  49.40254 | 105 | Art Director                            |
-| vogon         | male   | 158 | 221.4680 | 347.17172 | 114 | Airline Flight Operations Administrator |
-| dentrassi     | female |  19 | 195.7132 | 127.11481 | 120 | Catering Manager                        |
-| human         | female | 116 | 158.8244 |  58.51896 |  98 | Job Printer (Graphic Arts)              |
-| vogon         | female | 162 | 223.8171 | 329.11149 | 131 | Marina Boat Charter Administrator       |
+| race          | sex    | age |   height |    weight |  IQ | occupation                      |
+|:--------------|:-------|----:|---------:|----------:|----:|:--------------------------------|
+| dentrassi     | female |  29 | 202.4878 | 121.52308 | 124 | Prep Cook                       |
+| golgafrinchan | female |  52 | 160.4627 |  68.84373 |  88 | Lawyer                          |
+| vogon         | female | 136 | 225.5528 | 337.40408 | 123 | Administrative Law Judge        |
+| golgafrinchan | male   |  65 | 168.2843 |  76.58272 |  97 | Telephone Sanitiser             |
+| golgafrinchan | female |  39 | 150.5065 |  44.23596 |  96 | Telephone Sanitiser             |
+| dentrassi     | female |  78 | 187.4747 |  92.01110 | 112 | Sous Chef                       |
+| human         | male   | 106 | 171.7167 |  77.04722 | 100 | Wildlife Control Agent          |
+| vogon         | female | 106 | 235.6081 | 358.39383 | 125 | Constructor Fleet Administrator |
+| vogon         | female |  36 | 222.6442 | 335.69040 | 116 | Employment Administrator        |
+| dentrassi     | male   |  25 | 216.7342 | 202.59335 |  99 | Line Cook                       |
 
 Races currently available:
 
