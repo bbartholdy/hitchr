@@ -12,8 +12,9 @@ coverage](https://codecov.io/gh/bbartholdy/hitchr/branch/master/graph/badge.svg)
 <!-- badges: end -->
 
 Random sample generator inspired by Douglas Adams’ The Hitchhiker’s
-Guide to the Galaxy. It also allows random insertion of NAs in a
-dataset.
+Guide to the Galaxy. It also allows random insertion of NAs in a dataset
+(inspired by the [wakefield](https://github.com/trinker/wakefield)
+package).
 
 Currently in development.
 
@@ -44,18 +45,18 @@ hitchr::infinite_improbability_drive(10) # generates a random sample of 10 indiv
 hitchr::iidr(10)
 ```
 
-| race          | sex    | age |   height |    weight |  IQ | occupation                 |
-|:--------------|:-------|----:|---------:|----------:|----:|:---------------------------|
-| dentrassi     | male   |  65 | 203.7982 | 142.69380 | 111 | Meat Chef                  |
-| human         | male   |  65 | 176.1781 |  79.58721 | 114 | Computer Science Professor |
-| golgafrinchan | female |  66 | 157.7584 |  51.43497 | 107 | Telephone Sanitiser        |
-| human         | male   |  31 | 183.5021 |  98.44338 | 101 | School Plant Consultant    |
-| human         | male   |  44 | 168.4442 |  71.05795 | 108 | Brokerage Clerk            |
-| vogon         | other  |  32 | 225.3888 | 336.14345 | 126 | Soldier                    |
-| golgafrinchan | male   | 111 | 174.5229 |  89.47568 |  90 | Telephone Sanitiser        |
-| dentrassi     | female |  50 | 207.5635 | 116.21769 | 100 | Line Cook                  |
-| golgafrinchan | male   |  50 | 178.0011 |  83.97213 | 110 | Telephone Sanitiser        |
-| vogon         | female |  66 | 229.1963 | 354.32124 | 121 | Registrar Administrator    |
+| race      | sex    | age |   height |    weight |  IQ | occupation                        |
+|:----------|:-------|----:|---------:|----------:|----:|:----------------------------------|
+| vogon     | female | 116 | 237.8610 | 360.92057 | 124 | Constructor Fleet Commander       |
+| human     | female | 110 | 164.0031 |  65.83540 | 108 | Power-Line Installer and Mechanic |
+| human     | male   |  86 | 180.7487 |  89.31737 | 111 | Medical Transcriptionist          |
+| vogon     | other  | 100 | 232.2256 | 346.29791 | 123 | Database Administrator            |
+| human     | male   |  73 | 175.0993 |  84.10506 |  99 | Highway Patrol Pilot              |
+| dentrassi | male   |  68 | 206.0508 | 158.83543 | 116 | Sauce Chef                        |
+| vogon     | female |  67 | 247.5029 | 366.95365 | 122 | Airport Administrator Assistant   |
+| vogon     | male   | 115 | 227.9935 | 356.16089 | 115 | Clerk Clerk                       |
+| vogon     | other  | 123 | 228.3493 | 339.02701 | 121 | Student Admissions Administrator  |
+| vogon     | female |  45 | 224.4713 | 345.39481 | 131 | Historic Site Administrator       |
 
 Missing values can be inserted symmetrically (symm = T): equal number of
 NAs in each column, or asymmetrically (symm = F): random distribution in
@@ -68,16 +69,16 @@ hitchr::iidr(10, na_prob = 0.2, symm = T)
 
 | race          | sex    | age |   height |    weight |  IQ | occupation                   |
 |:--------------|:-------|----:|---------:|----------:|----:|:-----------------------------|
-| human         | NA     |  48 |       NA |  84.44877 |  NA | Medical Appliance Technician |
-| NA            | male   |   6 | 174.7484 |  75.42575 |  NA | NA                           |
-| vogon         | female | 131 | 228.6128 | 341.91166 | 126 | Court Administrator          |
-| vogon         | female |  31 | 240.2549 | 365.49602 | 115 | Airport Administrator        |
-| human         | male   |  NA | 166.7079 |  70.58106 | 107 | Financial Aid Counselor      |
-| golgafrinchan | male   |  NA |       NA |        NA | 100 | Hairdresser                  |
-| NA            | NA     | 160 | 233.7188 | 344.05068 | 115 | Registrar Administrator      |
-| vogon         | male   | 135 | 222.7486 |        NA | 123 | Employment Administrator     |
-| human         | male   |  68 | 170.1780 |  77.42818 | 102 | NA                           |
-| vogon         | male   |  49 | 227.5629 | 340.09014 | 121 | Cost Accountant              |
+| human         | NA     | 117 | 163.6390 |  64.87463 | 101 | Model Maker                  |
+| vogon         | male   |  61 | 216.9804 | 333.82430 | 124 | Social Welfare Administrator |
+| NA            | female |  NA | 175.7280 |  79.64324 | 108 | Telephone Sanitiser          |
+| golgafrinchan | male   |  67 | 173.2247 |  81.89972 | 105 | Hairdresser                  |
+| dentrassi     | female |  72 | 196.5604 |        NA |  93 | NA                           |
+| NA            | male   |  74 |       NA |        NA |  NA | Fish Chef                    |
+| dentrassi     | male   |  NA | 208.3152 | 144.35097 | 116 | Line Cook                    |
+| human         | male   |  87 |       NA | 104.37433 | 101 | NA                           |
+| dentrassi     | NA     |  37 | 195.0003 | 109.93150 |  NA | Meat Chef                    |
+| dentrassi     | male   |  64 | 226.9801 | 159.64902 | 153 | Meat Chef                    |
 
 Races currently available:
 
