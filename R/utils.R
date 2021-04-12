@@ -58,42 +58,21 @@ missing <- function(x, na_prob = 0.1, cols = seq_along(x), symm = T){
   return(x)
 }
 
-#' Create a random sample
+#' The Infinite Improbability Drive
+#'
+#' Generates a random sample of individuals.
 #'
 #' @param n number of individuals to generate.
 #' @param race which races to include in the generated sample. Default is all.
 #' @param na_prob Numeric. Proportion of values that should be missing at random.
 #' Must be a number between 0 and 1.
 #' @param ... can be used to pass 'stats' through to race-specific functions. see example.
-#' @importFrom dplyr as_tibble
-#'
-#' @export
-h2g2 <- function(n, race = race_index(), na_prob = NULL, ...){
-
-   race <- match.arg(race, race_index(), T)
-   race <- as.list(race)
-   args <- list(n, ...)
-   x <- lapply(race, do.call, args)
-   x <- as.data.frame(data.table::rbindlist(x, use.names = T))
-   h2g2_sample <- x[sample(1:nrow(x), size = n, replace = F), ]
-  # create randomly missing variables if input is used
-  if(!is.null(na_prob)){
-    h2g2_sample <- missing(h2g2_sample, na_prob = na_prob, cols = seq_along(h2g2_sample))
-  }
-  h2g2_sample <- dplyr::as_tibble(h2g2_sample)
-  return(h2g2_sample)
-}
-
-#' The Infinite Improbability Drive
-#'
-#' Generates a random sample of individuals.
-#'
-#' @inheritParams h2g2
 #' @param quiet if FALSE, will print a statement about the odds of a random event.
 #' Default is TRUE.
+#' @importFrom dplyr as_tibble
 #' @export
 infinite_improbability_drive <- function(n, race = race_index(), na_prob = NULL,
-                                         quiet = T, ...){
+                                         quiet = T, symm = T, ...){
 
   race <- match.arg(race, race_index(), T)
   race <- as.list(race)
@@ -103,11 +82,17 @@ infinite_improbability_drive <- function(n, race = race_index(), na_prob = NULL,
   h2g2_sample <- x[sample(1:nrow(x), size = n, replace = F), ]
   # create randomly missing variables if input is used
   if(!is.null(na_prob)){
-    h2g2_sample <- missing(h2g2_sample, na_prob = na_prob, cols = seq_along(h2g2_sample))
+    if(symm == FALSE){
+      h2g2_sample <- missing(h2g2_sample, na_prob = na_prob,
+                             cols = seq_along(h2g2_sample), symm = F)
+    } else {
+      h2g2_sample <- missing(h2g2_sample, na_prob = na_prob,
+                           cols = seq_along(h2g2_sample))
+    }
   }
   h2g2_sample <- dplyr::as_tibble(h2g2_sample)
   if(quiet == FALSE){
-    print(iidr())
+    print(drive_output())
   }
   return(h2g2_sample)
 }
@@ -120,9 +105,11 @@ race_index <- function(){
   return(current)
 }
 
+#' Same functionality as the 'infinite_improbability_drive' function but easier
+#' to write!
 #' @inheritParams infinite_improbability_drive
 #' @export
-inf_improb_dr <- function(...){
+iidr <- function(...){
   infinite_improbability_drive(...)
 }
 

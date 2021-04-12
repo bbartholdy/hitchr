@@ -7,7 +7,7 @@ vogon_poetry <- function(){
   # really really bad poetry
 }
 
-iidr <- function(){
+drive_output <- function(){
   prob <- runif(1, max = 10^9)
   prob <- format(round(prob), big.mark = ",")
   paste(prob, "to 1 against")

@@ -5,7 +5,7 @@ hum_sample <- humans(n)
 vog_sample <- vogons(n)
 vog_sample_stats <- vogons(n, stats = stats)
 hum_sample_stats <- humans(n, stats = stats)
-custom_sample <- h2g2(n, race = race, stats = stats)
+custom_sample <- iidr(n, race = race, stats = stats)
 
 # test various sample sizes
 hitchr_sample <- list()

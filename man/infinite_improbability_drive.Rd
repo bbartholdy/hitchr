@@ -17,6 +17,9 @@ infinite_improbability_drive(
 
 \item{race}{which races to include in the generated sample. Default is all.}
 
+\item{na_prob}{Numeric. Proportion of values that should be missing at random.
+Must be a number between 0 and 1.}
+
 \item{quiet}{if FALSE, will print a statement about the odds of a random event.
 Default is TRUE.}
 
