@@ -12,7 +12,8 @@ coverage](https://codecov.io/gh/bbartholdy/hitchr/branch/master/graph/badge.svg)
 <!-- badges: end -->
 
 Random sample generator inspired by Douglas Adams’ The Hitchhiker’s
-Guide to the Galaxy.
+Guide to the Galaxy. It also allows random insertion of NAs in a
+dataset.
 
 Currently in development.
 
@@ -22,7 +23,7 @@ To install:
 remotes::install_github("bbartholdy/hitchr")
 ```
 
-:exclamation:**Important Note**:exclamation:
+## :exclamation:Important Note:exclamation:
 
 This package deals with the concept of ‘race’ in a strictly biological
 sense; i.e., there is no way to biologically distinguish discrete races
@@ -39,20 +40,44 @@ and the social injustice that currently persists across the globe.
 
 ``` r
 hitchr::infinite_improbability_drive(10) # generates a random sample of 10 individuals
+# or
+hitchr::iidr(10)
 ```
 
-| race          | sex    | age |   height |    weight |  IQ | occupation                      |
-|:--------------|:-------|----:|---------:|----------:|----:|:--------------------------------|
-| dentrassi     | female |  29 | 202.4878 | 121.52308 | 124 | Prep Cook                       |
-| golgafrinchan | female |  52 | 160.4627 |  68.84373 |  88 | Lawyer                          |
-| vogon         | female | 136 | 225.5528 | 337.40408 | 123 | Administrative Law Judge        |
-| golgafrinchan | male   |  65 | 168.2843 |  76.58272 |  97 | Telephone Sanitiser             |
-| golgafrinchan | female |  39 | 150.5065 |  44.23596 |  96 | Telephone Sanitiser             |
-| dentrassi     | female |  78 | 187.4747 |  92.01110 | 112 | Sous Chef                       |
-| human         | male   | 106 | 171.7167 |  77.04722 | 100 | Wildlife Control Agent          |
-| vogon         | female | 106 | 235.6081 | 358.39383 | 125 | Constructor Fleet Administrator |
-| vogon         | female |  36 | 222.6442 | 335.69040 | 116 | Employment Administrator        |
-| dentrassi     | male   |  25 | 216.7342 | 202.59335 |  99 | Line Cook                       |
+| race          | sex    | age |   height |    weight |  IQ | occupation                 |
+|:--------------|:-------|----:|---------:|----------:|----:|:---------------------------|
+| dentrassi     | male   |  65 | 203.7982 | 142.69380 | 111 | Meat Chef                  |
+| human         | male   |  65 | 176.1781 |  79.58721 | 114 | Computer Science Professor |
+| golgafrinchan | female |  66 | 157.7584 |  51.43497 | 107 | Telephone Sanitiser        |
+| human         | male   |  31 | 183.5021 |  98.44338 | 101 | School Plant Consultant    |
+| human         | male   |  44 | 168.4442 |  71.05795 | 108 | Brokerage Clerk            |
+| vogon         | other  |  32 | 225.3888 | 336.14345 | 126 | Soldier                    |
+| golgafrinchan | male   | 111 | 174.5229 |  89.47568 |  90 | Telephone Sanitiser        |
+| dentrassi     | female |  50 | 207.5635 | 116.21769 | 100 | Line Cook                  |
+| golgafrinchan | male   |  50 | 178.0011 |  83.97213 | 110 | Telephone Sanitiser        |
+| vogon         | female |  66 | 229.1963 | 354.32124 | 121 | Registrar Administrator    |
+
+Missing values can be inserted symmetrically (symm = T): equal number of
+NAs in each column, or asymmetrically (symm = F): random distribution in
+the columns. To insert missing values, specify the desired proportion of
+missing values (0 to 1).
+
+``` r
+hitchr::iidr(10, na_prob = 0.2, symm = T)
+```
+
+| race          | sex    | age |   height |    weight |  IQ | occupation                   |
+|:--------------|:-------|----:|---------:|----------:|----:|:-----------------------------|
+| human         | NA     |  48 |       NA |  84.44877 |  NA | Medical Appliance Technician |
+| NA            | male   |   6 | 174.7484 |  75.42575 |  NA | NA                           |
+| vogon         | female | 131 | 228.6128 | 341.91166 | 126 | Court Administrator          |
+| vogon         | female |  31 | 240.2549 | 365.49602 | 115 | Airport Administrator        |
+| human         | male   |  NA | 166.7079 |  70.58106 | 107 | Financial Aid Counselor      |
+| golgafrinchan | male   |  NA |       NA |        NA | 100 | Hairdresser                  |
+| NA            | NA     | 160 | 233.7188 | 344.05068 | 115 | Registrar Administrator      |
+| vogon         | male   | 135 | 222.7486 |        NA | 123 | Employment Administrator     |
+| human         | male   |  68 | 170.1780 |  77.42818 | 102 | NA                           |
+| vogon         | male   |  49 | 227.5629 | 340.09014 | 121 | Cost Accountant              |
 
 Races currently available:
 
@@ -74,7 +99,7 @@ hitchr:::stats_index()
 Sexual dimorphism in the height of males and females of different races:
 
 ``` r
-hitchr_sample <- hitchr::inf_improb_dr(1000)
+hitchr_sample <- hitchr::iidr(1000)
 hitchr_sample %>%
   filter(sex == "male" | sex == "female") %>%
   group_by(race) %>%
