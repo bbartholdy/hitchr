@@ -6,11 +6,6 @@ missing_vector <- function(x, na_prob){
 
 #' @inheritParams missing
 missing_symm <- function(x, na_prob = 0.1, cols = seq_along(x)){
-  if(na_prob > 1){
-    na_prob <- na_prob / 100
-    warning(paste("'missing_prob' must be a probability between 0 and 1 \n
-              Input was automatically replaced by", na_prob))
-  }
   if(is.null(dim(x))){
     x <- missing_vector(x, na_prob = na_prob)
   } else {
@@ -47,7 +42,7 @@ missing_asymm <- function(x, na_prob = 0.1, cols = seq_along(x)){
 missing <- function(x, na_prob = 0.1, cols = seq_along(x), symm = T){
   if(na_prob > 1){
     na_prob <- na_prob / 100
-    warning(paste("'missing_prob' must be a probability between 0 and 1 \n
+    warning(paste("'na_prob' must be a probability between 0 and 1 \n
               Input was automatically replaced by", na_prob))
   }
   if(symm == TRUE){
@@ -69,6 +64,8 @@ missing <- function(x, na_prob = 0.1, cols = seq_along(x), symm = T){
 #' @param ... can be used to pass 'stats' through to race-specific functions. see example.
 #' @param quiet if FALSE, will print a statement about the odds of a random event.
 #' Default is TRUE.
+#' @param symm logical. whether the missing values should be inserted symmetrically,
+#' i.e., whether each column should contain the same number of NAs.
 #' @importFrom dplyr as_tibble
 #' @export
 infinite_improbability_drive <- function(n, race = race_index(), na_prob = NULL,

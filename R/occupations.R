@@ -1,3 +1,12 @@
+#' Dentrassi Occupations
+#'
+#' A list of dentrassi occupations
+#'
+#' @format A data frame with ? rows and 1 variable.
+#'
+#' @source include source...
+"dentrassi_occupations"
+
 #' Human Occupations
 #'
 #' A list of human occupations

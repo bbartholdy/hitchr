@@ -9,6 +9,7 @@ infinite_improbability_drive(
   race = race_index(),
   na_prob = NULL,
   quiet = T,
+  symm = T,
   ...
 )
 }
@@ -22,6 +23,9 @@ Must be a number between 0 and 1.}
 
 \item{quiet}{if FALSE, will print a statement about the odds of a random event.
 Default is TRUE.}
+
+\item{symm}{logical. whether the missing values should be inserted symmetrically,
+i.e., whether each column should contain the same number of NAs.}
 
 \item{...}{can be used to pass 'stats' through to race-specific functions. see example.}
 }
