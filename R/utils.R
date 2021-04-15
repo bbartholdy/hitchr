@@ -30,7 +30,8 @@ missing_asymm <- function(x, na_prob = 0.1, cols = seq_along(x)){
 #' Inserts NAs throughout a data frame at random
 #'
 #' @details Function is a modified version of 'r_na' and r_na_vector' from the
-#' 'wakefield' package.
+#' 'wakefield' package. It adds the functionality to add NAs asymmetrically to
+#' a data frame, meaning the number of NAs per column will vary.
 #' @param x Data frame or vector.
 #' @param na_prob the probability of missing values per variable in the data frame.
 #' Default is 0.1, i.e. each variable will have 10% NAs.
@@ -102,8 +103,8 @@ race_index <- function(){
   return(current)
 }
 
-#' Same functionality as the 'infinite_improbability_drive' function but easier
-#' to write!
+#' Same functionality as the 'infinite_improbability_drive' function but infinitely
+#' easier to write!
 #' @inheritParams infinite_improbability_drive
 #' @export
 iidr <- function(...){

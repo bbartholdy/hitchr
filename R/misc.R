@@ -4,7 +4,8 @@
 #'
 #' @export
 vogon_poetry <- function(){
-  # really really bad poetry
+  "This function is currently under construction. It cannot proceed until orders
+  have been signed in triplicates."
 }
 
 drive_output <- function(){
@@ -18,7 +19,30 @@ drive_output <- function(){
 #' @export
 
 the_guide <- function(){
-  "under construction"
+  "This function is currently under construction. It cannot proceed until orders
+  have been signed in triplicates."
   # function to retrieve guide entries from https://www.h2g2.com/ or
     # https://hitchhikers.fandom.com/wiki/Main_Page
+}
+
+# calculate the proportion of missing values within a variable or row of a data frame.
+towel <- function(x, rowwise = F, colwise = T, cols = NULL){
+  if(is.null(dim(x))){
+    prop_na <- mean(is.na(x))
+    return(prop_na)
+  } else {
+    prop_na_cols <- colMeans(is.na(x))
+    prop_na_rows <- rowMeans(is.na(x))
+      if(!is.null(cols)){
+        prop_na_cols <- prop_na_cols[,cols]
+      }
+    }
+  if(rowwise == F) {
+    return(prop_na_cols)
+  } else if(colwise == F){
+    return(prop_na_rows)
+  } else {
+    prop_na <- list("cols" = prop_na_cols, "rows" = prop_na_rows)
+  }
+  return(prop_na)
 }

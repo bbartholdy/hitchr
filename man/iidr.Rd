@@ -2,8 +2,8 @@
 % Please edit documentation in R/utils.R
 \name{iidr}
 \alias{iidr}
-\title{Same functionality as the 'infinite_improbability_drive' function but easier
-to write!}
+\title{Same functionality as the 'infinite_improbability_drive' function but infinitely
+easier to write!}
 \usage{
 iidr(...)
 }
@@ -11,6 +11,6 @@ iidr(...)
 \item{...}{can be used to pass 'stats' through to race-specific functions. see example.}
 }
 \description{
-Same functionality as the 'infinite_improbability_drive' function but easier
-to write!
+Same functionality as the 'infinite_improbability_drive' function but infinitely
+easier to write!
 }
