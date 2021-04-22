@@ -13,26 +13,31 @@ dentrassi <- function(n, stats = stats_index(), ...){
   n_male <- round(n * rnorm(1, 0.5, 0.05))
   n_female <- n - n_male
   male_cov <- matrix(nrow = 2, ncol = 2)
+  repeat{
   male_cov[1,1] <- rnorm(1, 80, 1)
   male_cov[1,2] <- rnorm(1, 70, 1)
   male_cov[2,1] <- male_cov[1,2]
   male_cov[2,2] <- rnorm(1, 100, 1)
-
+  if(det(male_cov) > 0) break
+  }
+  repeat{
   female_cov <- matrix(nrow = 2, ncol = 2)
-  female_cov[1,1] <- rnorm(1, 80, 1)
-  female_cov[1,2] <- rnorm(1, 70, 1)
+  female_cov[1,1] <- rnorm(1, 160, 1)
+  female_cov[1,2] <- rnorm(1, 140, 1)
   female_cov[2,1] <- female_cov[1,2]
-  female_cov[2,2] <- rnorm(1, 100, 1)
+  female_cov[2,2] <- rnorm(1, 200, 1)
+  if(det(female_cov) > 0) break
+  }
   c_names <- c("height", "weight")
   males <- as.data.frame(
     MASS::mvrnorm(n_male,
-                  c(rnorm(1, 200, 20), rnorm(1, 160, 10)),
+                  c(rnorm(1, 200, 10), rnorm(1, 160, 10)),
                   male_cov))
   colnames(males) <- c_names
   males$sex <- rep("male", n_male)
   females <- as.data.frame(
     MASS::mvrnorm(n_female,
-                  c(rnorm(1, 240, 50), rnorm(1, 190, 40)),
+                  c(rnorm(1, 240, 10), rnorm(1, 190, 10)),
                   female_cov)
   )
   colnames(females) <- c_names
