@@ -45,18 +45,18 @@ hitchr::infinite_improbability_drive(10) # generates a random sample of 10 indiv
 hitchr::iidr(10)
 ```
 
-| race      | sex    | age |   height |    weight |  IQ | occupation                        |
-|:----------|:-------|----:|---------:|----------:|----:|:----------------------------------|
-| vogon     | female | 116 | 237.8610 | 360.92057 | 124 | Constructor Fleet Commander       |
-| human     | female | 110 | 164.0031 |  65.83540 | 108 | Power-Line Installer and Mechanic |
-| human     | male   |  86 | 180.7487 |  89.31737 | 111 | Medical Transcriptionist          |
-| vogon     | other  | 100 | 232.2256 | 346.29791 | 123 | Database Administrator            |
-| human     | male   |  73 | 175.0993 |  84.10506 |  99 | Highway Patrol Pilot              |
-| dentrassi | male   |  68 | 206.0508 | 158.83543 | 116 | Sauce Chef                        |
-| vogon     | female |  67 | 247.5029 | 366.95365 | 122 | Airport Administrator Assistant   |
-| vogon     | male   | 115 | 227.9935 | 356.16089 | 115 | Clerk Clerk                       |
-| vogon     | other  | 123 | 228.3493 | 339.02701 | 121 | Student Admissions Administrator  |
-| vogon     | female |  45 | 224.4713 | 345.39481 | 131 | Historic Site Administrator       |
+| race          | sex    | age |   height |    weight |  IQ | occupation                      |
+|:--------------|:-------|----:|---------:|----------:|----:|:--------------------------------|
+| golgafrinchan | female |  75 | 160.7486 |  71.34171 |  79 | Lawyer                          |
+| golgafrinchan | male   |  88 | 180.5427 |  92.66954 |  96 | Telephone Sanitiser             |
+| dentrassi     | male   |  22 | 159.6553 | 144.90796 | 116 | Senior Chef                     |
+| vogon         | male   | 142 | 234.4148 | 364.43622 | 124 | Constructor Fleet Administrator |
+| dentrassi     | male   |  76 | 168.7561 | 139.27380 | 101 | Vegetable Chef                  |
+| golgafrinchan | female |  94 | 164.2331 |  66.20763 |  99 | Lawyer                          |
+| golgafrinchan | male   |  17 | 167.8532 |  70.56446 | 108 | Telephone Sanitiser             |
+| dentrassi     | female |  48 | 330.4523 | 206.29692 | 102 | Vegetable Chef                  |
+| human         | male   | 116 | 181.6672 |  93.58805 | 107 | Radio & TV Newscaster           |
+| vogon         | female | 132 | 234.9198 | 362.91644 | 128 | Cost Accountant                 |
 
 Missing values can be inserted symmetrically (symm = T): equal number of
 NAs in each column, or asymmetrically (symm = F): random distribution in
@@ -67,18 +67,18 @@ missing values (0 to 1).
 hitchr::iidr(10, na_prob = 0.2, symm = T)
 ```
 
-| race          | sex    | age |   height |    weight |  IQ | occupation                   |
-|:--------------|:-------|----:|---------:|----------:|----:|:-----------------------------|
-| human         | NA     | 117 | 163.6390 |  64.87463 | 101 | Model Maker                  |
-| vogon         | male   |  61 | 216.9804 | 333.82430 | 124 | Social Welfare Administrator |
-| NA            | female |  NA | 175.7280 |  79.64324 | 108 | Telephone Sanitiser          |
-| golgafrinchan | male   |  67 | 173.2247 |  81.89972 | 105 | Hairdresser                  |
-| dentrassi     | female |  72 | 196.5604 |        NA |  93 | NA                           |
-| NA            | male   |  74 |       NA |        NA |  NA | Fish Chef                    |
-| dentrassi     | male   |  NA | 208.3152 | 144.35097 | 116 | Line Cook                    |
-| human         | male   |  87 |       NA | 104.37433 | 101 | NA                           |
-| dentrassi     | NA     |  37 | 195.0003 | 109.93150 |  NA | Meat Chef                    |
-| dentrassi     | male   |  64 | 226.9801 | 159.64902 | 153 | Meat Chef                    |
+| race          | sex    | age |   height |    weight |  IQ | occupation                           |
+|:--------------|:-------|----:|---------:|----------:|----:|:-------------------------------------|
+| vogon         | male   |  NA | 236.4337 | 360.01617 | 117 | Education and Training Administrator |
+| dentrassi     | male   |  79 | 271.0564 | 164.04972 |  97 | Sauce Chef                           |
+| human         | female |  54 |       NA |        NA | 112 | Medical Secretary                    |
+| NA            | female |   1 | 159.6122 |        NA |  84 | Lawyer                               |
+| human         | NA     |  78 |       NA |  85.86503 |  NA | Fraud Investigator                   |
+| vogon         | female | 179 | 220.3853 | 343.59491 |  NA | NA                                   |
+| human         | NA     |  95 | 156.6267 |  56.92940 |  97 | Physician’s Office Nurse             |
+| golgafrinchan | female |  11 | 165.8895 |  58.64694 | 118 | NA                                   |
+| golgafrinchan | female |  85 | 161.0003 |  59.12484 | 105 | Hairdresser                          |
+| NA            | male   |  NA | 170.9844 |  81.70233 |  98 | Hairdresser                          |
 
 Races currently available:
 

@@ -1,22 +1,3 @@
-#' Function to create a random sample of Betelgeusians
-#'
-#' @inheritParams humans
-#' @export
-betelgeusians <- function(n, stats = stats_index(),
-                          ...){
-  race <- rep("betelgeusian", n)
-  sigma <- matrix(nrow = 2, ncol = 2)
-  sigma[1,1] <- rnorm(1, 80, 1)
-  sigma[1,2] <- rnorm(1, 70, 1)
-  sigma[2,1] <- sigma[1,2]
-  sigma[2,2] <- rnorm(1, 100, 1)
-  betel_hw <- as.data.frame(
-    MASS::mvrnorm(n, c(168.5736, 73.2282), sigma, empirical = T)
-  )
-  IQ <- rnorm(n, 130)
-  age <- runif(n, 0, 320)
-}
-
 #' Function to create a random sample of Dentrassi
 #'
 #' @details The Dentrassi are described as 'an unruly tribe of
@@ -45,13 +26,13 @@ dentrassi <- function(n, stats = stats_index(), ...){
   c_names <- c("height", "weight")
   males <- as.data.frame(
     MASS::mvrnorm(n_male,
-                  c(rnorm(1, 215, 10), rnorm(1, 180, 20)),
+                  c(rnorm(1, 200, 20), rnorm(1, 160, 10)),
                   male_cov))
   colnames(males) <- c_names
   males$sex <- rep("male", n_male)
   females <- as.data.frame(
     MASS::mvrnorm(n_female,
-                  c(rnorm(1, 190, 10), rnorm(1, 115, 15)),
+                  c(rnorm(1, 240, 50), rnorm(1, 190, 40)),
                   female_cov)
   )
   colnames(females) <- c_names
@@ -65,11 +46,6 @@ dentrassi <- function(n, stats = stats_index(), ...){
                                      "occupation" = occupation)
   dentrassi_sample <- dentrassi_sample[, stats]
   return(dentrassi_sample)
-}
-
-#' @inheritParams humans
-dolphins <- function(...){
-
 }
 
 #' Function to create a random sample of Golgafrinchans
@@ -114,20 +90,6 @@ golgafrinchans <- function(n, stats = stats_index(), ...){
                                      "occupation" = occupation)
   golgafrinchan_sample <- golgafrinchan_sample[, stats]
   return(golgafrinchan_sample)
-}
-
-haggunenons <- function(n, stats = stats_index(), ...){
-  race <- rep("Haggunenon", n)
-  sigma <- matrix(nrow = 2, ncol = 2)
-  sigma[1,] <- c(4000, 2000)
-  sigma
-  haggunenon_sample <- mvrnorm(n, c(180, 100), sigma, empirical = T)
-  haggunenon_sample <- as_tibble(haggunenon_sample)
-  IQ <- round(rnorm(n, 100, 40))
-  age <- runif(n, 1, 10) #no data on age, but that type of rapid evolution is hardly sustainable
-  sex <- sample(c("male", "female", "unknown", "hybrid"), n, replace = T) #many different sexes
-  haggunenon_sample <- tibble(race, sex, age, haggunenon_sample, IQ)
-  occupation <- "????"
 }
 
 #' Random sample of humans

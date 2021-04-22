@@ -23,7 +23,8 @@ Inserts NAs throughout a data frame at random
 }
 \details{
 Function is a modified version of 'r_na' and r_na_vector' from the
-'wakefield' package.
+'wakefield' package. It adds the functionality to add NAs asymmetrically to
+a data frame, meaning the number of NAs per column will vary.
 }
 \seealso{
 \code{\link[wakefield]{r_na}}
