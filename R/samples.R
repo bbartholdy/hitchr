@@ -1,8 +1,9 @@
 #' Function to create a random sample of Dentrassi
 #'
-#' @details The Dentrassi are described as 'an unruly tribe of
+#' @details In the current edition of The Guide, there is no
+#' entry for the Dentrassi. However, they are described as 'an unruly tribe of
 #' gourmands, a wild but pleasant bunch whom the Vogons had recently taken to employ
-#' as catering staff on their long-haul fleets (...).
+#' as catering staff on their long-haul fleets (...)'.
 #'
 #' -- *Douglas Adams, Hitchiker's Guide to the Galaxy*
 #' @inheritParams humans
@@ -55,6 +56,12 @@ dentrassi <- function(n, stats = stats_index(), ...){
 
 #' Function to create a random sample of Golgafrinchans
 #'
+#' @details The Golgafrinchans generated from this particular function are the
+#' middlemen, who were the only remaining Golgafrinchans after the only useful part
+#' of the population, the 'doers' and the 'thinkers', got wiped out by a disease
+#' contracted from a dirty telephone. They are also believed to be the true
+#' ancestors of humans. As such, the only occupations available are Lawyer,
+#' Hairdresser, and Telephone Sanitiser.
 #' @inheritParams humans
 #' @export
 golgafrinchans <- function(n, stats = stats_index(), ...){
@@ -66,14 +73,14 @@ golgafrinchans <- function(n, stats = stats_index(), ...){
   repeat {
     male_cov[1,] <- c(52.89566, 56.31551, rnorm(1, 40, 1))
     male_cov[2,] <- c(56.31551, 80.5074, rnorm(1, 10, 1))
-    male_cov[3,] <- c(male_cov[1,3], male_cov[2,3] ,rnorm(1, 100, 1))
+    male_cov[3,] <- c(male_cov[1,3], male_cov[2,3] ,rnorm(1, 80, 1))
     if(det(male_cov) > 0) break
   }
   repeat {
     female_cov <- matrix(nrow = 3, ncol = 3)
     female_cov[1,] <- c(46.90279, 50.20551, rnorm(1, 40, 1))
     female_cov[2,] <- c(50.20551, 74.45026, rnorm(1, 10, 1))
-    female_cov[3,] <- c(female_cov[1,3], female_cov[2,3], rnorm(1,100, 1))
+    female_cov[3,] <- c(female_cov[1,3], female_cov[2,3], rnorm(1, 80, 1))
     if(det(female_cov) > 0) break
   }
   c_names <- c("height", "weight", "IQ")
@@ -86,7 +93,7 @@ golgafrinchans <- function(n, stats = stats_index(), ...){
                                          c(161.8203, 61.62517, 101), female_cov))
   colnames(females) <- c_names
   females$sex <- rep("female", n_female)
-  age <- round(runif(n, 0, 120))
+  age <- round(runif(n, 18, 120))
   occupation <- sample(c("Telephone Sanitiser", "Lawyer", "Hairdresser"),
                        size = n, replace = T, ...)
   golgafrinchan_sample <- rbind(males, females)
@@ -117,20 +124,19 @@ humans <- function(n, stats = stats_index(), ...){
   #  Female  48.63
   #  Intersex  0.30
 
-  # height and weight stats from ?
     # covariance matrices for height, weight, and IQ
   male_cov <- matrix(nrow = 3, ncol = 3)
   repeat {
   male_cov[1,] <- c(52.89566, 56.31551, rnorm(1, 40, 1))
   male_cov[2,] <- c(56.31551, 80.5074, rnorm(1, 10, 1))
-  male_cov[3,] <- c(male_cov[1,3], male_cov[2,3] ,rnorm(1, 100, 1))
+  male_cov[3,] <- c(male_cov[1,3], male_cov[2,3] ,rnorm(1, 80, 1))
   if(det(male_cov) > 0) break
   }
   repeat {
   female_cov <- matrix(nrow = 3, ncol = 3)
   female_cov[1,] <- c(46.90279, 50.20551, rnorm(1, 40, 1))
   female_cov[2,] <- c(50.20551, 74.45026, rnorm(1, 10, 1))
-  female_cov[3,] <- c(female_cov[1,3], female_cov[2,3], rnorm(1,100, 1))
+  female_cov[3,] <- c(female_cov[1,3], female_cov[2,3], rnorm(1, 80, 1))
   if(det(female_cov) > 0) break
   }
     # random multivariate normal data frame with pre-defined means

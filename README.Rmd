@@ -6,6 +6,7 @@ output: github_document
 knitr::opts_chunk$set(echo = TRUE)
 library(hitchr)
 library(tidyverse)
+library(cowplot)
 random_sample <- iidr(10)
 random_NAs <- iidr(10, na_prob = 0.2)
 ```
@@ -27,7 +28,7 @@ Currently in development.
 To install:
 
 ```{r eval=FALSE}
-remotes::install_github("bbartholdy/hitchr")
+devtools::install_github("bbartholdy/hitchr")
 ```
 
 ## :exclamation:Important Note:exclamation:
@@ -79,6 +80,7 @@ Stats currently available:
 hitchr:::stats_index()
 ```
 
+
 Sexual dimorphism in the height of males and females of different races:
 
 ```{r sex-dim}
@@ -87,7 +89,7 @@ hitchr_sample %>%
   filter(sex == "male" | sex == "female") %>%
   group_by(race) %>%
   ggplot(aes(x = sex, y = height, fill = race)) +
-    geom_boxplot() +
+    geom_violin() +
     theme_minimal() +
     scale_fill_viridis_d() +
     facet_wrap(~ race) +

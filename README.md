@@ -21,7 +21,7 @@ Currently in development.
 To install:
 
 ``` r
-remotes::install_github("bbartholdy/hitchr")
+devtools::install_github("bbartholdy/hitchr")
 ```
 
 ## :exclamation:Important Note:exclamation:
@@ -45,18 +45,18 @@ hitchr::infinite_improbability_drive(10) # generates a random sample of 10 indiv
 hitchr::iidr(10)
 ```
 
-| race          | sex    | age |   height |    weight |  IQ | occupation                      |
-|:--------------|:-------|----:|---------:|----------:|----:|:--------------------------------|
-| golgafrinchan | female |  75 | 160.7486 |  71.34171 |  79 | Lawyer                          |
-| golgafrinchan | male   |  88 | 180.5427 |  92.66954 |  96 | Telephone Sanitiser             |
-| dentrassi     | male   |  22 | 159.6553 | 144.90796 | 116 | Senior Chef                     |
-| vogon         | male   | 142 | 234.4148 | 364.43622 | 124 | Constructor Fleet Administrator |
-| dentrassi     | male   |  76 | 168.7561 | 139.27380 | 101 | Vegetable Chef                  |
-| golgafrinchan | female |  94 | 164.2331 |  66.20763 |  99 | Lawyer                          |
-| golgafrinchan | male   |  17 | 167.8532 |  70.56446 | 108 | Telephone Sanitiser             |
-| dentrassi     | female |  48 | 330.4523 | 206.29692 | 102 | Vegetable Chef                  |
-| human         | male   | 116 | 181.6672 |  93.58805 | 107 | Radio & TV Newscaster           |
-| vogon         | female | 132 | 234.9198 | 362.91644 | 128 | Cost Accountant                 |
+| race          | sex    | age |   height |    weight |  IQ | occupation                              |
+|:--------------|:-------|----:|---------:|----------:|----:|:----------------------------------------|
+| vogon         | male   | 119 | 218.9113 | 337.37462 | 120 | Radio & TV Station Administrator        |
+| human         | male   |  86 | 171.9779 |  87.08809 |  88 | Aircraft Launch and Recovery Specialist |
+| vogon         | male   | 174 | 223.4751 | 345.32792 | 123 | Airline Flight Control Administrator    |
+| human         | male   |  65 | 186.9627 |  90.55032 | 119 | Corporation Lawyer                      |
+| vogon         | female |  50 | 240.3953 | 361.70849 | 128 | Compensation Administrator              |
+| human         | female |  36 | 156.3274 |  62.38904 |  85 | Catering Specialist                     |
+| dentrassi     | female |  39 | 228.8883 | 170.35520 |  95 | Mixologist                              |
+| golgafrinchan | female |  81 | 166.1575 |  64.56290 | 106 | Hairdresser                             |
+| human         | male   |  22 | 179.0706 |  99.37656 |  86 | Medical Appliance Technician            |
+| golgafrinchan | female |  99 | 157.5227 |  56.12888 |  99 | Lawyer                                  |
 
 Missing values can be inserted symmetrically (symm = T): equal number of
 NAs in each column, or asymmetrically (symm = F): random distribution in
@@ -67,18 +67,18 @@ missing values (0 to 1).
 hitchr::iidr(10, na_prob = 0.2, symm = T)
 ```
 
-| race          | sex    | age |   height |    weight |  IQ | occupation                           |
-|:--------------|:-------|----:|---------:|----------:|----:|:-------------------------------------|
-| vogon         | male   |  NA | 236.4337 | 360.01617 | 117 | Education and Training Administrator |
-| dentrassi     | male   |  79 | 271.0564 | 164.04972 |  97 | Sauce Chef                           |
-| human         | female |  54 |       NA |        NA | 112 | Medical Secretary                    |
-| NA            | female |   1 | 159.6122 |        NA |  84 | Lawyer                               |
-| human         | NA     |  78 |       NA |  85.86503 |  NA | Fraud Investigator                   |
-| vogon         | female | 179 | 220.3853 | 343.59491 |  NA | NA                                   |
-| human         | NA     |  95 | 156.6267 |  56.92940 |  97 | Physician’s Office Nurse             |
-| golgafrinchan | female |  11 | 165.8895 |  58.64694 | 118 | NA                                   |
-| golgafrinchan | female |  85 | 161.0003 |  59.12484 | 105 | Hairdresser                          |
-| NA            | male   |  NA | 170.9844 |  81.70233 |  98 | Hairdresser                          |
+| race          | sex    | age |   height |    weight |  IQ | occupation                       |
+|:--------------|:-------|----:|---------:|----------:|----:|:---------------------------------|
+| NA            | NA     | 133 | 230.9012 | 352.57964 | 117 | NA                               |
+| golgafrinchan | female |  69 |       NA |        NA |  NA | Hairdresser                      |
+| dentrassi     | male   |  50 | 184.9166 |        NA |  NA | Catering Manager                 |
+| golgafrinchan | male   |  21 | 184.8061 | 106.54740 |  86 | Lawyer                           |
+| vogon         | male   |  87 | 230.1761 | 360.40930 | 127 | Medical Administrative Assistant |
+| human         | female |  91 | 161.3102 |  60.90431 |  99 | NA                               |
+| human         | NA     |  45 | 165.0936 |  67.15560 |  98 | Experimental Psychologist        |
+| NA            | male   |  NA | 228.2959 | 343.53299 | 119 | Student Admissions Administrator |
+| golgafrinchan | female |  NA | 157.0766 |  57.51374 | 100 | Lawyer                           |
+| dentrassi     | female |  37 |       NA | 189.65472 | 108 | Pantry Chef                      |
 
 Races currently available:
 
@@ -105,7 +105,7 @@ hitchr_sample %>%
   filter(sex == "male" | sex == "female") %>%
   group_by(race) %>%
   ggplot(aes(x = sex, y = height, fill = race)) +
-    geom_boxplot() +
+    geom_violin() +
     theme_minimal() +
     scale_fill_viridis_d() +
     facet_wrap(~ race) +
