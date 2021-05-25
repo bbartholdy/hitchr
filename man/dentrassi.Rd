@@ -18,9 +18,10 @@ list of available stats.}
 Function to create a random sample of Dentrassi
 }
 \details{
-The Dentrassi are described as 'an unruly tribe of
+In the current edition of The Guide, there is no
+entry for the Dentrassi. However, they are described as 'an unruly tribe of
 gourmands, a wild but pleasant bunch whom the Vogons had recently taken to employ
-as catering staff on their long-haul fleets (...).
+as catering staff on their long-haul fleets (...)'.
 
 -- \emph{Douglas Adams, Hitchiker's Guide to the Galaxy}
 }

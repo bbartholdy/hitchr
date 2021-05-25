@@ -48,6 +48,8 @@ dentrassi <- function(n, stats = stats_index(), ...){
   dentrassi_sample <- rbind(males, females)
   dentrassi_sample$IQ <- round(rnorm(n, 110, 15))
   dentrassi_sample$age <- round(runif(n, 10, 80))
+  # date of birth calculated from an earth-based calendar for simplicity
+  dentrassi_sample$dob <- date(Sys.Date()) - (dentrassi_sample$age * 365)
   dentrassi_sample <- data.frame("race" = race, dentrassi_sample,
                                      "occupation" = occupation)
   dentrassi_sample <- dentrassi_sample[, stats]
@@ -63,6 +65,7 @@ dentrassi <- function(n, stats = stats_index(), ...){
 #' ancestors of humans. As such, the only occupations available are Lawyer,
 #' Hairdresser, and Telephone Sanitiser.
 #' @inheritParams humans
+#' @importFrom lubridate date
 #' @export
 golgafrinchans <- function(n, stats = stats_index(), ...){
   if(n < 5) stop("'n' must be greater than or equal to 5")
@@ -93,13 +96,13 @@ golgafrinchans <- function(n, stats = stats_index(), ...){
                                          c(161.8203, 61.62517, 101), female_cov))
   colnames(females) <- c_names
   females$sex <- rep("female", n_female)
-  age <- round(runif(n, 18, 120))
   occupation <- sample(c("Telephone Sanitiser", "Lawyer", "Hairdresser"),
                        size = n, replace = T, ...)
   golgafrinchan_sample <- rbind(males, females)
   golgafrinchan_sample$IQ <- round(golgafrinchan_sample$IQ)
-  golgafrinchan_sample <- data.frame("race" = race, golgafrinchan_sample, "age" = age,
-                                     "occupation" = occupation)
+  golgafrinchan_sample$age <- round(runif(n, 18, 120))
+  golgafrinchan_sample$dob <- date(Sys.Date()) - (golgafrinchan_sample$age * 365)
+  golgafrinchan_sample <- data.frame("race" = race, golgafrinchan_sample, "occupation" = occupation)
   golgafrinchan_sample <- golgafrinchan_sample[, stats]
   return(golgafrinchan_sample)
 }
@@ -115,7 +118,6 @@ golgafrinchans <- function(n, stats = stats_index(), ...){
 #' @export
 humans <- function(n, stats = stats_index(), ...){
   if(n < 5) stop("'n' must be greater than or equal to 5")
-  race <- rep("human", n)
     # sex ratios
   n_male <- round(n * rnorm(1, 0.5107, 0.01))
   n_inter <- round(n * rnorm(1, 0.003, 0.001)) # need better method
@@ -154,16 +156,14 @@ humans <- function(n, stats = stats_index(), ...){
     )
   colnames(females) <- c_names
   females$sex <- rep("female", n_female)
-  occupation <- hitchr::human_occupations[sample(1:nrow(hitchr::human_occupations), size = n, replace = T), ]
-  names(occupation) <- "occupation"
   human_sample <- rbind(males, females)
-  human_sample$race <- race
+  human_sample$race <- rep("human", n)
   human_sample$sex[sample(1:nrow(human_sample), size = n_inter)] <- "intersex"
   human_sample$sex <- as.factor(human_sample$sex)
   human_sample$age <- round(runif(n, 18, 120)) # only "adults"
   human_sample$IQ <- round(human_sample$IQ)
-  human_sample$occupation[human_sample$age > 70] <- paste(human_sample$occupation, "(retired)")
-  human_sample$occupation <- as.factor(occupation)
+  human_sample$occupation <- hitchr::human_occupations[sample(1:nrow(hitchr::human_occupations), size = n, replace = T), ]
+  human_sample$occupation <- as.factor(human_sample$occupation)
   human_sample <- human_sample[, stats]
   return(human_sample)
 }

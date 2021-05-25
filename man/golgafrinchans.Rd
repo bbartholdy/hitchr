@@ -17,3 +17,11 @@ list of available stats.}
 \description{
 Function to create a random sample of Golgafrinchans
 }
+\details{
+The Golgafrinchans generated from this particular function are the
+middlemen, who were the only remaining Golgafrinchans after the only useful part
+of the population, the 'doers' and the 'thinkers', got wiped out by a disease
+contracted from a dirty telephone. They are also believed to be the true
+ancestors of humans. As such, the only occupations available are Lawyer,
+Hairdresser, and Telephone Sanitiser.
+}

@@ -16,3 +16,9 @@ hum_asymm_select <- is.na(missing(hum_samp, na_prob = na_prob, cols = 2:5, symm 
 test_that("Test missing values in select columns", {
   expect_equal(mean(colMeans(hum_asymm_select[,2:5])), na_prob)
 })
+
+miss_prop_cols <- towel(hum_samp_na)
+
+test_that("Test towel function", {
+  expect_equal(miss_prop_cols, na_prob)
+})
