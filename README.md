@@ -8,7 +8,7 @@
 [![build
 status](https://github.com/bbartholdy/hitchr/workflows/R-CMD-check/badge.svg)](https://github.com/bbartholdy/hitchr/actions)
 [![Codecov test
-coverage](https://codecov.io/gh/bbartholdy/hitchr/branch/master/graph/badge.svg)](https://codecov.io/gh/bbartholdy/hitchr?branch=master)
+coverage](https://codecov.io/gh/bbartholdy/hitchr/branch/main/graph/badge.svg)](https://codecov.io/gh/bbartholdy/hitchr?branch=main)
 <!-- badges: end -->
 
 Random sample generator inspired by Douglas Adams’ The Hitchhiker’s
@@ -45,18 +45,18 @@ hitchr::infinite_improbability_drive(10) # generates a random sample of 10 indiv
 hitchr::iidr(10)
 ```
 
-| race          | sex    | age |   height |    weight |  IQ | occupation                       |
-|:--------------|:-------|----:|---------:|----------:|----:|:---------------------------------|
-| vogon         | female |  33 | 238.3984 | 363.72789 | 135 | Administrative Service Manager   |
-| golgafrinchan | male   | 116 | 169.3851 |  74.37272 | 103 | Telephone Sanitiser              |
-| vogon         | other  |  75 | 227.3093 | 338.49223 | 116 | Radio & TV Station Administrator |
-| vogon         | other  |  48 | 218.5734 | 335.50006 | 121 | Middle School Administrator      |
-| vogon         | female |  40 | 241.6593 | 367.25400 | 121 | Budget Analyst Assistant         |
-| vogon         | male   |  49 | 226.0841 | 346.26322 | 111 | Contract Administrator           |
-| human         | male   | 107 | 178.2377 |  83.00112 | 109 | Corporation Lawyer               |
-| dentrassi     | female |  37 | 228.4441 | 185.49499 | 136 | Short Order Cook                 |
-| human         | male   |  82 | 179.7285 |  89.18975 | 103 | Medical Insurance Claims Analyst |
-| golgafrinchan | male   | 105 | 173.7337 |  80.33702 | 103 | Lawyer                           |
+| race          | sex    | age |   height |    weight |  IQ | occupation                                 |
+|:--------------|:-------|----:|---------:|----------:|----:|:-------------------------------------------|
+| human         | female |  96 | 168.6519 |  69.85078 | 105 | Private Sector Executives                  |
+| vogon         | other  |  58 | 221.1757 | 330.25662 | 125 | Educational Administrator                  |
+| vogon         | male   |  78 | 228.4906 | 347.81608 | 120 | Correspondence Clerk                       |
+| dentrassi     | male   |  67 | 219.2894 | 167.68239 | 108 | Senior Chef                                |
+| dentrassi     | female |  37 | 234.6897 | 159.88330 | 103 | Catering Manager                           |
+| golgafrinchan | male   |  48 | 173.4461 |  88.76329 |  88 | Telephone Sanitiser                        |
+| vogon         | other  |  83 | 239.3880 | 356.35169 | 118 | Radio & TV Station Administrator           |
+| human         | female | 101 | 150.7992 |  59.83803 |  77 | Sociology Professor                        |
+| human         | male   |  86 | 176.2204 |  88.30514 |  98 | Traffic Technicians                        |
+| human         | male   |  52 | 182.7481 |  91.65596 | 107 | Sales Representitive (Psychological Tests) |
 
 Missing values can be inserted symmetrically (symm = T): equal number of
 NAs in each column, or asymmetrically (symm = F): random distribution in
@@ -67,18 +67,18 @@ missing values (0 to 1).
 hitchr::iidr(10, na_prob = 0.2, symm = T)
 ```
 
-| race          | sex    | age |   height |    weight |  IQ | occupation             |
-|:--------------|:-------|----:|---------:|----------:|----:|:-----------------------|
-| golgafrinchan | NA     |  98 | 182.1347 |  85.47916 | 110 | Telephone Sanitiser    |
-| NA            | male   |  NA | 208.2297 | 151.58739 | 126 | Catering Server        |
-| dentrassi     | female |  35 | 222.4170 |        NA | 100 | NA                     |
-| NA            | female |  37 | 154.5780 |  42.29741 |  NA | NA                     |
-| golgafrinchan | male   |  82 |       NA |  83.41748 | 107 | Lawyer                 |
-| golgafrinchan | female |  NA | 176.4589 |  80.66594 | 109 | Hairdresser            |
-| golgafrinchan | male   |  59 | 182.3020 |  86.31510 | 114 | Lawyer                 |
-| dentrassi     | NA     |  76 | 249.6915 |        NA | 103 | Meat Chef              |
-| vogon         | female |  88 |       NA | 334.52934 | 112 | Database Administrator |
-| golgafrinchan | female |  56 | 142.9584 |  40.57427 |  NA | Hairdresser            |
+| race          | sex    | age |   height |    weight |  IQ | occupation                                |
+|:--------------|:-------|----:|---------:|----------:|----:|:------------------------------------------|
+| human         | NA     |  80 | 157.9002 |  50.09614 | 105 | NA                                        |
+| NA            | female | 148 |       NA | 340.34108 |  NA | Hospital Administrator                    |
+| golgafrinchan | female |  92 | 142.8915 |  40.63229 |  87 | Lawyer                                    |
+| dentrassi     | male   |  52 | 190.6590 | 152.21343 | 102 | Sous Chef                                 |
+| dentrassi     | female |  14 | 240.9271 | 187.54610 |  NA | Meat Chef                                 |
+| golgafrinchan | male   |  NA | 183.7253 |        NA | 103 | Telephone Sanitiser                       |
+| vogon         | female |  65 | 242.8901 | 374.37214 | 118 | Assistant to the Administrative Assistant |
+| golgafrinchan | NA     |  NA | 162.9730 |  70.51134 |  92 | Hairdresser                               |
+| NA            | female |  46 |       NA | 204.46458 |  96 | NA                                        |
+| dentrassi     | female |  50 | 229.9627 |        NA |  94 | Short Order Cook                          |
 
 Races currently available:
 
