@@ -21,11 +21,10 @@ drive_output <- function(){
 the_guide <- function(){
   "This function is currently under construction. It cannot proceed until orders
   have been signed in triplicates."
-  # function to retrieve guide entries from https://www.h2g2.com/ or
-    # https://hitchhikers.fandom.com/wiki/Main_Page
 }
 
 # calculate the proportion of missing values within a variable or row of a data frame.
+#' This function is about the most massively useful thing in this package.
 towel <- function(x, rowwise = F, colwise = T, cols = NULL){
   if(is.null(dim(x))){
     prop_na <- mean(is.na(x))

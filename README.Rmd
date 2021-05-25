@@ -17,7 +17,7 @@ random_NAs <- iidr(10, na_prob = 0.2)
 
 <!-- badges: start -->
 [![build status](https://github.com/bbartholdy/hitchr/workflows/R-CMD-check/badge.svg)](https://github.com/bbartholdy/hitchr/actions)
-[![Codecov test coverage](https://codecov.io/gh/bbartholdy/hitchr/branch/master/graph/badge.svg)](https://codecov.io/gh/bbartholdy/hitchr?branch=master)
+[![Codecov test coverage](https://codecov.io/gh/bbartholdy/hitchr/branch/main/graph/badge.svg)](https://codecov.io/gh/bbartholdy/hitchr?branch=main)
 <!-- badges: end -->
 
 Random sample generator inspired by Douglas Adams' The Hitchhiker's Guide to the Galaxy. It also allows random insertion of NAs in a dataset (inspired by the

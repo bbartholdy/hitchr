@@ -94,14 +94,6 @@ infinite_improbability_drive <- function(n, race = race_index(), na_prob = NULL,
   return(h2g2_sample)
 }
 
-race_index <- function(){
-  race <- c("betegeusians", "dentrassi", "dolphins", "golgafrinchans",
-            "haggunenons", "humans", "jatravartids", "krikkits",
-            "magratheans", "mice", "vogons")
-  current <- c("humans", "vogons", "golgafrinchans", "dentrassi")
-  return(current)
-}
-
 #' Same functionality as the 'infinite_improbability_drive' function but infinitely
 #' easier to write!
 #' @inheritParams infinite_improbability_drive
@@ -110,7 +102,17 @@ iidr <- function(...){
   infinite_improbability_drive(...)
 }
 
+race_index <- function(){
+  race <- c("betegeusians", "dentrassi", "dolphins", "golgafrinchans",
+            "haggunenons", "humans", "jatravartids", "krikkits",
+            "magratheans", "mice", "vogons")
+  current <- c("humans", "vogons", "golgafrinchans", "dentrassi")
+  return(current)
+}
+
 stats_index <- function(){
-  stats <- c("race", "sex", "age", "height", "weight", "IQ", "occupation")
-  return(stats)
+  stats <- c("race", "sex", "age", "dob", "height", "weight", "IQ", "occupation",
+             "ses", "income")
+  current <- c("race", "sex", "age", "height", "weight", "IQ", "occupation")
+  return(current)
 }
