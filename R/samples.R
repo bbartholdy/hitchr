@@ -49,8 +49,6 @@ dentrassi <- function(n, stats = stats_index(), ...){
   dentrassi_sample <- rbind(males, females)
   dentrassi_sample$IQ <- round(rnorm(n, 110, 15))
   dentrassi_sample$age <- round(runif(n, 10, 80))
-  # date of birth calculated from an earth-based calendar for simplicity
-  dentrassi_sample$dob <- date(Sys.Date()) - (dentrassi_sample$age * 365)
   dentrassi_sample <- data.frame("race" = race, dentrassi_sample,
                                      "occupation" = occupation)
   dentrassi_sample <- dentrassi_sample[, stats]
