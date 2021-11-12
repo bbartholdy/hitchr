@@ -105,10 +105,8 @@ race_index <- function(){
 #' Same functionality as the 'infinite_improbability_drive' function but infinitely
 #' easier to write!
 #' @inheritParams infinite_improbability_drive
-#' @export
-iidr <- function(...){
-  infinite_improbability_drive(...)
-}
+#' @rdname iidr
+iidr = infinite_improbability_drive
 
 stats_index <- function(){
   stats <- c("race", "sex", "age", "height", "weight", "IQ", "occupation")
