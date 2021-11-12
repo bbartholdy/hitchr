@@ -116,6 +116,7 @@ golgafrinchans <- function(n, stats = stats_index(), ...){
 #' @param stats which stats to include in the sample. See 'stats_index()' for a
 #' list of available stats.
 #' @param ... currently serves no function.
+#' @importFrom stats rnorm runif
 #' @export
 humans <- function(n, stats = stats_index(), ...){
   if(n < 5) stop("'n' must be greater than or equal to 5")
