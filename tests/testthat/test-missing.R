@@ -20,3 +20,9 @@ test_that("Test missing values in select columns", {
   expect_length(is_miss_cols, ncol(hum_samp_na))
   expect_length(is_miss_rows, nrow(hum_samp_na))
 })
+
+miss_prop_cols <- towel(hum_samp_na)
+
+test_that("Test towel function", {
+  expect_equal(miss_prop_cols, na_prob)
+})

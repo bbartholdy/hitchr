@@ -97,31 +97,8 @@ infinite_improbability_drive <- function(n, race = race_index(), na_prob = NULL,
 #' Same functionality as the 'infinite_improbability_drive' function but infinitely
 #' easier to write!
 #' @inheritParams infinite_improbability_drive
-#' @export
-iidr <- function(n, race = race_index(), na_prob = NULL,
-                 quiet = T, symm = T, ...){
-  race <- match.arg(race, race_index(), T)
-  race <- as.list(race)
-  args <- list(n, ...)
-  x <- lapply(race, do.call, args)
-  x <- as.data.frame(data.table::rbindlist(x, use.names = T))
-  h2g2_sample <- x[sample(1:nrow(x), size = n, replace = F), ]
-  # create randomly missing variables if input is used
-  if(!is.null(na_prob)){
-    if(symm == FALSE){
-      h2g2_sample <- missing(h2g2_sample, na_prob = na_prob,
-                             cols = seq_along(h2g2_sample), symm = F)
-    } else {
-      h2g2_sample <- missing(h2g2_sample, na_prob = na_prob,
-                             cols = seq_along(h2g2_sample))
-    }
-  }
-  h2g2_sample <- dplyr::as_tibble(h2g2_sample)
-  if(quiet == FALSE){
-    print(drive_output())
-  }
-  return(h2g2_sample)
-}
+#' @rdname iidr
+iidr = infinite_improbability_drive
 
 race_index <- function(){
   race <- c("betegeusians", "dentrassi", "dolphins", "golgafrinchans",

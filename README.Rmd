@@ -20,7 +20,7 @@ random_NAs <- iidr(10, na_prob = 0.2)
 [![Codecov test coverage](https://codecov.io/gh/bbartholdy/hitchr/branch/main/graph/badge.svg)](https://codecov.io/gh/bbartholdy/hitchr?branch=main)
 <!-- badges: end -->
 
-Random sample generator inspired by Douglas Adams' The Hitchhiker's Guide to the Galaxy. It also allows random insertion of NAs in a dataset (inspired by the
+Random sample generator based on Douglas Adams' The Hitchhiker's Guide to the Galaxy. It also allows random insertion of NAs in a dataset (inspired by the
 [wakefield](https://github.com/trinker/wakefield) package).
 
 Currently in development.
