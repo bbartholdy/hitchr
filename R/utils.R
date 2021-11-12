@@ -41,6 +41,10 @@ missing_asymm <- function(x, na_prob = 0.1, cols = seq_along(x)){
 #' i.e., whether each column should contain the same number of NAs.
 #' @seealso \code{\link[wakefield]{r_na}}
 missing <- function(x, na_prob = 0.1, cols = seq_along(x), symm = T){
+  if(is.matrix(x)) {
+    x <- as.data.frame(x)
+    warning("missing() does not currently support matrices. Input was converted to a data frame")
+  }
   if(na_prob > 1){
     na_prob <- na_prob / 100
     warning(paste("'na_prob' must be a probability between 0 and 1 \n
