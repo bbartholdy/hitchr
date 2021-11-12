@@ -5,9 +5,22 @@
 \title{Same functionality as the 'infinite_improbability_drive' function but infinitely
 easier to write!}
 \usage{
-iidr(...)
+iidr(n, race = race_index(), na_prob = NULL, quiet = T, symm = T, ...)
 }
 \arguments{
+\item{n}{number of individuals to generate.}
+
+\item{race}{which races to include in the generated sample. Default is all.}
+
+\item{na_prob}{Numeric. Proportion of values that should be missing at random.
+Must be a number between 0 and 1.}
+
+\item{quiet}{if FALSE, will print a statement about the odds of a random event.
+Default is TRUE.}
+
+\item{symm}{logical. whether the missing values should be inserted symmetrically,
+i.e., whether each column should contain the same number of NAs.}
+
 \item{...}{can be used to pass 'stats' through to race-specific functions. see example.}
 }
 \description{

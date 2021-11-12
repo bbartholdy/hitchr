@@ -6,6 +6,15 @@
 \usage{
 towel(x, rowwise = F, colwise = T, cols = NULL)
 }
+\arguments{
+\item{x}{data frame containing NAs.}
+
+\item{rowwise}{perform rowwise calculation of NAs.}
+
+\item{colwise}{perform colwise calculation of NAs (default).}
+
+\item{cols}{columns on which to perform calculation (default is all columns).}
+}
 \description{
 This function is about the most massively useful thing in this package.
 }
