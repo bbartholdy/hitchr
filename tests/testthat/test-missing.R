@@ -22,7 +22,9 @@ test_that("Test missing values in select columns", {
 })
 
 miss_prop_cols <- towel(hum_samp_na)
+names(miss_prop_cols) <- NULL
+na_cols_expected <- rep(na_prob, length(miss_prop_cols))
 
 test_that("Test towel function", {
-  expect_equal(miss_prop_cols, na_prob)
+  expect_equal(miss_prop_cols, na_cols_expected)
 })
