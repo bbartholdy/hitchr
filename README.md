@@ -9,6 +9,7 @@
 status](https://github.com/bbartholdy/hitchr/workflows/R-CMD-check/badge.svg)](https://github.com/bbartholdy/hitchr/actions)
 [![Codecov test
 coverage](https://codecov.io/gh/bbartholdy/hitchr/branch/main/graph/badge.svg)](https://codecov.io/gh/bbartholdy/hitchr?branch=main)
+[![hitchr status badge](https://bbartholdy.r-universe.dev/badges/hitchr)](https://bbartholdy.r-universe.dev)
 <!-- badges: end -->
 
 Random sample generator inspired by Douglas Adams’ The Hitchhiker’s
