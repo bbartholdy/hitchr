@@ -25,6 +25,10 @@ the_guide <- function(){
 
 # calculate the proportion of missing values within a variable or row of a data frame.
 #' This function is about the most massively useful thing in this package.
+#' @param x data frame containing NAs.
+#' @param rowwise perform rowwise calculation of NAs.
+#' @param colwise perform colwise calculation of NAs (default).
+#' @param cols columns on which to perform calculation (default is all columns).
 towel <- function(x, rowwise = F, colwise = T, cols = NULL){
   if(is.null(dim(x))){
     prop_na <- mean(is.na(x))
