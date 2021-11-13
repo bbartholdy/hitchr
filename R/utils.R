@@ -19,7 +19,7 @@ missing_asymm <- function(x, na_prob = 0.1, cols = seq_along(x)){
   x_na <- x[cols]
   n_vect <- nrow(x_na) * ncol(x_na)
   na_vector <- c(rep(1, n_vect))
-  na_vector[sample(1:length(na_vector), size = 0.1 * n_vect)] <- NA
+  na_vector[sample(1:length(na_vector), size = na_prob * n_vect)] <- NA
   na_matrix <- is.na(matrix(na_vector, nrow = nrow(x_na), ncol = ncol(x_na)))
   x_na[na_matrix] <- NA
   x[cols] <- x_na
