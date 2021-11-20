@@ -4,7 +4,7 @@
 \alias{missing}
 \title{Inserts NAs throughout a data frame at random}
 \usage{
-missing(x, na_prob = 0.1, cols = seq_along(x), symm = T)
+missing(x, na_prob = 0.1, cols = seq_along(x), symm = F)
 }
 \arguments{
 \item{x}{Data frame or vector.}

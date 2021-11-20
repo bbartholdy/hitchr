@@ -1,8 +1,8 @@
 hum_samp <- humans(100)
 na_prob <- 0.1
-hum_samp_na <- missing(hum_samp, na_prob = na_prob)
+hum_samp_na <- missing(hum_samp, na_prob = na_prob, symm = T)
 hum_vect_na <- hum_samp_na[,2]
-hum_asymm_na <- is.na(missing(hum_samp, na_prob = na_prob, symm = F))
+hum_asymm_na <- is.na(missing(hum_samp, na_prob = na_prob))
 is_miss_cols <- towel(hum_samp_na)
 is_miss_rows <- towel(hum_samp_na, rowwise = T, colwise = F)
 

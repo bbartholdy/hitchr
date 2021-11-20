@@ -1,11 +1,19 @@
 #' @inheritParams missing
 missing_vector <- function(x, na_prob){
-  x[sample(seq_along(x), round(na_prob * length(x)))] <- NA
+  if(!is.null(dim(x))){
+    n_vector <- nrow(x)
+    x[sample.int(n_vector, round(na_prob * n_vector)),] <- NA
+  } else {
+    n_vector <- length(x)
+    x[sample(seq_along(x), round(na_prob * n_vector))] <- NA
+  }
+
   return(x)
 }
 
 #' @inheritParams missing
-missing_symm <- function(x, na_prob = 0.1, cols = seq_along(x)){
+missing_symm <- function(x, na_prob = na_prob, cols = seq_along(x)){
+  # add if length(na_prob) > 1
   if(is.null(dim(x))){
     x <- missing_vector(x, na_prob = na_prob)
   } else {
@@ -15,7 +23,7 @@ missing_symm <- function(x, na_prob = 0.1, cols = seq_along(x)){
 }
 
 #' @inheritParams missing
-missing_asymm <- function(x, na_prob = 0.1, cols = seq_along(x)){
+missing_asymm <- function(x, na_prob = na_prob, cols = seq_along(x)){
   x_na <- x[cols]
   n_vect <- nrow(x_na) * ncol(x_na)
   na_vector <- c(rep(1, n_vect))
@@ -26,7 +34,7 @@ missing_asymm <- function(x, na_prob = 0.1, cols = seq_along(x)){
   return(x)
 }
 
-# From 'wakefield' package
+# Some functionality from 'wakefield' package
 #' Inserts NAs throughout a data frame at random
 #'
 #' @details Function is a modified version of 'r_na' and r_na_vector' from the
@@ -39,8 +47,10 @@ missing_asymm <- function(x, na_prob = 0.1, cols = seq_along(x)){
 #' To leave out the first column, use cols = -1.
 #' @param symm logical. whether the missing values should be inserted symmetrically,
 #' i.e., whether each column should contain the same number of NAs.
+#' @return Returns the original data frame with NAs inserted. The default settings
+#' returns a data frame with data missing completely at random.
 #' @seealso \code{\link[wakefield]{r_na}}
-missing <- function(x, na_prob = 0.1, cols = seq_along(x), symm = T){
+missing <- function(x, na_prob = 0.1, cols = seq_along(x), symm = F){
   if(is.matrix(x)) {
     x <- as.data.frame(x)
     warning("missing() does not currently support matrices. Input was converted to a data frame")
@@ -51,8 +61,21 @@ missing <- function(x, na_prob = 0.1, cols = seq_along(x), symm = T){
               Input was automatically replaced by", na_prob))
   }
   if(symm == TRUE){
+
     x <- missing_symm(x, na_prob, cols)
+
   } else if(symm == FALSE) {
+
+    if(length(na_prob) > 1){
+      if(length(na_prob) != length(cols)){
+        stop(paste("na_prob must be a vector of length 1 or", length(cols),
+                   "to match the selected columns:", paste(cols, collapse = ", ")))
+      }
+      for(i in seq_along(cols)){
+        x[,i] <- missing_vector(x[,i], na_prob[i])
+      }
+      apply(x[c(cols)], 2, missing_vector, na_prob)
+    }
     x <- missing_asymm(x, na_prob, cols)
   }
   return(x)
