@@ -3,6 +3,7 @@
 export(dentrassi)
 export(golgafrinchans)
 export(humans)
+export(iidr)
 export(infinite_improbability_drive)
 export(the_guide)
 export(vogon_poetry)

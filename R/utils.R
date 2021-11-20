@@ -96,6 +96,7 @@ missing <- function(x, na_prob = 0.1, cols = seq_along(x), symm = F){
 #' i.e., whether each column should contain the same number of NAs.
 #' @importFrom dplyr as_tibble
 #' @export
+#' @rdname iidr
 infinite_improbability_drive <- function(n, race = race_index(), na_prob = NULL,
                                          quiet = T, symm = T, ...){
   race <- match.arg(race, race_index(), T)
@@ -123,7 +124,7 @@ infinite_improbability_drive <- function(n, race = race_index(), na_prob = NULL,
 
 #' Same functionality as the 'infinite_improbability_drive' function but infinitely
 #' easier to write!
-#' @inheritParams infinite_improbability_drive
+#' @export
 #' @rdname iidr
 iidr = infinite_improbability_drive
 

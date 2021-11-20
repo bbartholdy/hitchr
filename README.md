@@ -9,15 +9,15 @@
 status](https://github.com/bbartholdy/hitchr/workflows/R-CMD-check/badge.svg)](https://github.com/bbartholdy/hitchr/actions)
 [![Codecov test
 coverage](https://codecov.io/gh/bbartholdy/hitchr/branch/main/graph/badge.svg)](https://codecov.io/gh/bbartholdy/hitchr?branch=main)
-[![hitchr status badge](https://bbartholdy.r-universe.dev/badges/hitchr)](https://bbartholdy.r-universe.dev)
 <!-- badges: end -->
 
-Random sample generator inspired by Douglas Adams’ The Hitchhiker’s
-Guide to the Galaxy. It also allows random insertion of NAs in a dataset
+Random sample generator based on Douglas Adams’ The Hitchhiker’s Guide
+to the Galaxy. It also allows random insertion of NAs in a dataset
 (inspired by the [wakefield](https://github.com/trinker/wakefield)
 package).
 
-Currently in development.
+:warning: Currently in development. No warranty for deprecated functions
+as I come up with names I like better.
 
 To install:
 
@@ -46,18 +46,18 @@ hitchr::infinite_improbability_drive(10) # generates a random sample of 10 indiv
 hitchr::iidr(10)
 ```
 
-| race          | sex    | age |   height |    weight |  IQ | occupation                                 |
-|:--------------|:-------|----:|---------:|----------:|----:|:-------------------------------------------|
-| human         | female |  96 | 168.6519 |  69.85078 | 105 | Private Sector Executives                  |
-| vogon         | other  |  58 | 221.1757 | 330.25662 | 125 | Educational Administrator                  |
-| vogon         | male   |  78 | 228.4906 | 347.81608 | 120 | Correspondence Clerk                       |
-| dentrassi     | male   |  67 | 219.2894 | 167.68239 | 108 | Senior Chef                                |
-| dentrassi     | female |  37 | 234.6897 | 159.88330 | 103 | Catering Manager                           |
-| golgafrinchan | male   |  48 | 173.4461 |  88.76329 |  88 | Telephone Sanitiser                        |
-| vogon         | other  |  83 | 239.3880 | 356.35169 | 118 | Radio & TV Station Administrator           |
-| human         | female | 101 | 150.7992 |  59.83803 |  77 | Sociology Professor                        |
-| human         | male   |  86 | 176.2204 |  88.30514 |  98 | Traffic Technicians                        |
-| human         | male   |  52 | 182.7481 |  91.65596 | 107 | Sales Representitive (Psychological Tests) |
+| race          | sex    | age |   height |    weight |  IQ | occupation                        |
+|:--------------|:-------|----:|---------:|----------:|----:|:----------------------------------|
+| human         | female |  46 | 169.7442 |  70.94837 | 106 | Loan Interviewers and Clerks      |
+| dentrassi     | female |  11 | 241.9265 | 195.88013 | 128 | Sauce Chef                        |
+| human         | female |  48 | 166.6719 |  68.93619 | 104 | Retail Store Manager              |
+| golgafrinchan | female |  43 | 162.0785 |  57.60543 | 111 | Hairdresser                       |
+| golgafrinchan | female |  64 | 162.8788 |  61.95010 | 104 | Telephone Sanitiser               |
+| human         | male   |  20 | 168.3627 |  79.99588 |  92 | Animal Kennel Supervisor          |
+| vogon         | male   |  82 | 227.1756 | 344.21806 | 111 | Budget Accountant                 |
+| golgafrinchan | female |  54 | 154.0327 |  47.33048 | 102 | Lawyer                            |
+| vogon         | female |  69 | 234.0460 | 357.10865 | 118 | Certified Public Accountant (CPA) |
+| human         | female |  44 | 170.4220 |  69.74436 | 111 | Cost Analysis Engineer            |
 
 Missing values can be inserted symmetrically (symm = T): equal number of
 NAs in each column, or asymmetrically (symm = F): random distribution in
@@ -68,18 +68,18 @@ missing values (0 to 1).
 hitchr::iidr(10, na_prob = 0.2, symm = T)
 ```
 
-| race          | sex    | age |   height |    weight |  IQ | occupation                                |
-|:--------------|:-------|----:|---------:|----------:|----:|:------------------------------------------|
-| human         | NA     |  80 | 157.9002 |  50.09614 | 105 | NA                                        |
-| NA            | female | 148 |       NA | 340.34108 |  NA | Hospital Administrator                    |
-| golgafrinchan | female |  92 | 142.8915 |  40.63229 |  87 | Lawyer                                    |
-| dentrassi     | male   |  52 | 190.6590 | 152.21343 | 102 | Sous Chef                                 |
-| dentrassi     | female |  14 | 240.9271 | 187.54610 |  NA | Meat Chef                                 |
-| golgafrinchan | male   |  NA | 183.7253 |        NA | 103 | Telephone Sanitiser                       |
-| vogon         | female |  65 | 242.8901 | 374.37214 | 118 | Assistant to the Administrative Assistant |
-| golgafrinchan | NA     |  NA | 162.9730 |  70.51134 |  92 | Hairdresser                               |
-| NA            | female |  46 |       NA | 204.46458 |  96 | NA                                        |
-| dentrassi     | female |  50 | 229.9627 |        NA |  94 | Short Order Cook                          |
+| race          | sex    | age |   height |    weight |  IQ | occupation                       |
+|:--------------|:-------|----:|---------:|----------:|----:|:---------------------------------|
+| golgafrinchan | male   |  60 | 162.7905 |  78.49136 |  82 | Telephone Sanitiser              |
+| vogon         | male   | 155 | 229.3018 | 356.81475 |  NA | Court Clerk                      |
+| NA            | male   |  41 |       NA | 139.65722 | 103 | Relief Cook                      |
+| golgafrinchan | female |  NA | 167.8633 |  70.90681 | 103 | Telephone Sanitiser              |
+| dentrassi     | NA     |  71 | 249.7311 | 201.64804 | 121 | NA                               |
+| vogon         | other  | 132 |       NA | 362.72088 | 122 | Administrative Assistant         |
+| dentrassi     | male   |  57 | 232.3380 |        NA |  NA | Catering Specialist              |
+| human         | male   |  19 | 165.4532 |  78.66801 |  NA | Recreational Vehicle Mechanic    |
+| vogon         | female |  NA |       NA | 366.07988 | 126 | Catering Administrator           |
+| vogon         | other  |  33 |       NA |        NA | 118 | Radio & TV Station Administrator |
 
 Races currently available:
 

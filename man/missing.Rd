@@ -18,6 +18,10 @@ To leave out the first column, use cols = -1.}
 \item{symm}{logical. whether the missing values should be inserted symmetrically,
 i.e., whether each column should contain the same number of NAs.}
 }
+\value{
+Returns the original data frame with NAs inserted. The default settings
+returns a data frame with data missing completely at random.
+}
 \description{
 Inserts NAs throughout a data frame at random
 }
